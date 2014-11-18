@@ -42,9 +42,9 @@ var y = d3.scale.linear()  /*important --- for y.axis*/
 
 var xAxis = d3.svg.axis()
     .scale(x)
-    .orient("bottom");
+    .orient("top");
 
-var yAxis = d3.svg.axis()
+var yAxis = d3.svg.axis() /*position of numbers on the y axis, relative to the y axis line*/
     .scale(y)
     .orient("right");
 
