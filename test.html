@@ -71,7 +71,7 @@ d3.tsv("data.tsv", function(error, data) {
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
-      .attr("dx", ".71em")
+      .text("Price ($)");
 
   svg.append("g")
       .attr("class", "y axis")
