@@ -3,7 +3,7 @@
 <style>
 
 body {
-  font: 15px sans-serif;
+  font: 15px sans-serif;  /*font size for body*/
 }
 
 .axis path,
@@ -19,7 +19,7 @@ body {
 
 .line {
   fill: none;
-  stroke: red;
+  stroke: red; /*changes color of the line on the graph*/
   stroke-width: 1.5px;
 }
 
@@ -27,6 +27,14 @@ body {
 <body>
 <script src="http://d3js.org/d3.v3.js"></script>
 <script>
+
+.graph-outer {
+    background-color: black;
+    height: 20px;
+    width: 300px;   
+    border-radius: 10px;
+    padding: 1px;
+}
 
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 960 - margin.left - margin.right,
