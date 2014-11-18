@@ -32,7 +32,7 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-var parseDate = d3.time.format("%d-%b-%y").parse;
+var parseDate = d3.time.format("%d-%b-%y").parse;   /* ??? */
 
 var x = d3.time.scale()  /*important --- for x.axis*/
     .range([0, width]);
@@ -40,17 +40,17 @@ var x = d3.time.scale()  /*important --- for x.axis*/
 var y = d3.scale.linear()  /*important --- for y.axis*/
     .range([height, 0]);
 
-var xAxis = d3.svg.axis()
+var xAxis = d3.svg.axis() /*position of numbers on the x axis, relative to the x axis line*/
     .scale(x)
     .orient("top");
 
-var yAxis = d3.svg.axis() /*position of numbers on the y axis, relative to the y axis line*/
+var yAxis = d3.svg.axis() /*position of numbers on the y axis scale, relative to the y axis line*/
     .scale(y)
     .orient("left");
 
-var line = d3.svg.line()
-    .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.close); });
+var line = d3.svg.line()  /* ??? */
+    .x(function(d) { return x(d.date); })     /*date is one dataset from data.tsv*/
+    .y(function(d) { return y(d.close); });     /*close is one dataset from data.tsv*/
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -89,3 +89,7 @@ d3.tsv("data.tsv", function(error, data) {
 });
 
 </script>
+
+<p>
+  Hello World
+</p>
