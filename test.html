@@ -71,12 +71,19 @@ d3.tsv("data.tsv", function(error, data) {
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
+    .append("text") /*text for the x axis*/
+      .attr("transform", "rotate(0)")
+      .attr("x", 6)
+      .attr("dx", ".71em")
+      .style("text-anchor", "end")
+      .text("Price ($)");
 
-  svg.append("g")
+
+  svg.append("g") 
       .attr("class", "y axis")
       .call(yAxis)
-    .append("text")
-      .attr("transform", "rotate(-70)")
+    .append("text") /*text for the y axis*/
+      .attr("transform", "rotate(-90)")
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
