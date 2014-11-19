@@ -7,15 +7,11 @@
     </head>
     <body>
         <script type="text/javascript">
-            d3.select("body")
-            .append("p")
-            .text("New paragraph!");
-        </script>
-        
-        <script>
-            p {
-                color: red;
-            }
+            d3.select("body").selectAll("p")
+                .data(dataset)
+                .enter()
+                .append("p")
+                .text("New paragraph!");
         </script>
         <p>hello</p>
         
