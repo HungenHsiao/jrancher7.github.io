@@ -60,11 +60,11 @@ var svg = d3.select("body").append("svg")
 
 d3.tsv("data.tsv", function(error, data) {
   data.forEach(function(d) {
-    d.date = parseDate(d.vate);  /*important for getting data from data.tsv*/
+    d.date = parseDate(d.vate);  /*important for getting data from data.tsv --- for getting the axis's*/
     d.close = +d.close;
   });
 
-  x.domain(d3.extent(data, function(d) { return d.date; }));
+  x.domain(d3.extent(data, function(d) { return d.vate; }));
   y.domain(d3.extent(data, function(d) { return d.close; }));
 
   svg.append("g")
