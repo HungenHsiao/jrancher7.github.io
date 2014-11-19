@@ -12,9 +12,8 @@
                 .data(dataset)
                 .enter()
                 .append("p")
-                .text("New paragraph!");
+                .text(function(d) { return d; });
                 
-            console.log(d3.selectAll("p"))
             </script>
         
     </body>
