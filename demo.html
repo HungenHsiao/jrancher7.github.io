@@ -7,7 +7,7 @@
         <style type="text/css">
                 div.bar {
                     display: inline-block;
-                    width: 20px;
+                    width: 60px;
                     height: 75px;
                     margin-right: 2px;
                     background-color: teal;
@@ -24,8 +24,9 @@
                 .append("div")
                 .attr("class", "bar")
                 .style("height", function(d) {
-                    return d * 5 + "px";
+                    return d * 15 + "px";
                 })
+            d3.select("body").append("p").text("My beautiful bar graph!!!")
             </script>
            
         
