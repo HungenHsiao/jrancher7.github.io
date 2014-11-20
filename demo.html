@@ -12,6 +12,11 @@
                     margin-right: 2px;
                     background-color: teal;
                 }
+                p {
+                    font-family: Arial;
+                    font-size: 20px;
+                    color: blue;
+                }
         </style>
         <style type="text/css"></style>
     </head>
@@ -24,7 +29,8 @@
                 .append("div")
                 .attr("class", "bar")
                 .style("height", function(d) {
-                    return d * 15 + "px";
+                    var barHeight = d * 15;
+                    return barHeight + "px";
                 })
             d3.select("body").append("p").text("My beautiful bar graph!!!")
             </script>
