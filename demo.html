@@ -12,13 +12,11 @@
                 .data(dataset)
                 .enter()
                 .append("div")
-                .classed("bar", "true")
-            div.bar {
-                display: inline-block;
-                width: 20px;
-                height: 75px;   /* We'll override this later */
-                background-color: teal;
-            }
+                .attr("class", "bar")
+                .style("height", function(d) {
+                    return d + "px";
+                })
+                .style("width", 10px)
             </script>
             
             
