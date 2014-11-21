@@ -61,6 +61,21 @@
                 .append("svg")
                 .attr("width", 1000)
                 .attr("height", 50)
+                
+        var circles = svg.selectAll("circle")
+                .data(dataset)
+                .enter()
+                .append("circle");
+        var w = 500;
+        var h = 50;
+        
+           circles.attr("cx", function(d, i) {
+                return (i * 50) + 25;
+                })
+               .attr("cy", h/2)
+               .attr("r", function(d) {
+                    return d;
+               });
         </script>
     </body>
 </html>
