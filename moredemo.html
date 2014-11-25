@@ -66,8 +66,8 @@
         var barPadding = 1;
         
         var dataset = [
-                [5, 20], [480, 90], [250, 50], [100, 33], [330, 95],
-                [410, 12], [475, 44], [25, 67], [85, 21], [220, 88]
+                [5, 20, 4], [480, 90, 10], [250, 50, 29], [100, 33, 3], [330, 95, 20],
+                [410, 12, 10], [475, 44, 10], [25, 67, 28], [85, 21, 20], [220, 88, 3]
               ];
         
         var svg = d3.select("body")
@@ -76,7 +76,7 @@
                 .attr("height", h);
                 
               svg.selectAll("circle")
-              .data("dataset")
+              .data(dataset)
               .enter()
               .append("circle")
               .attr("cx", function(d) {
@@ -85,7 +85,9 @@
               .attr("cy", function(d) {
                   return d[1];
               })
-              .attr("r", 50);
+              .attr("r", function(d) {
+                  return d[2];
+              });
 
         </script>
     </body>
