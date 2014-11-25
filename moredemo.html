@@ -61,8 +61,8 @@
             
         </p>
         <script type="text/javascript">
-        var w = 1500;
-        var h = 1000;
+        var w = 1000;
+        var h = 600;
         
         var dataset = [
                 [5, 20, 4], [480, 90, 10], [250, 50, 29], [100, 33, 3], [330, 95, 20],
@@ -76,7 +76,7 @@
         var yScale = d3.scale.linear()
                     .domain([0, d3.max(dataset, function(d){return d[1];
                     })])
-                    .range([(h - padding), 0])
+                    .range([(h - padding * 2), 0])
         
 
         
