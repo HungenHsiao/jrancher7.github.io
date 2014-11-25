@@ -49,8 +49,9 @@
                 .text(function(d) {
                     return d
                 })
-                .attr("x", w/dataset.length)
-                .attr("y", h - (d*4));
+                .attr("x", function(d, i) {
+                    return i * w/dataset.length})
+                .attr("y", function (d){h - (d*4)});
 
         </script>
     </body>
