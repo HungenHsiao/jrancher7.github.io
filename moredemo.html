@@ -33,10 +33,10 @@
                 .attr("x", function (d, i) {
                     return i * (w/dataset.length); // this sets where each bar starts from
                 })
-                .attr("y", function(d) {return h - d;})
+                .attr("y", function(d) {return h - d;}) //we are setting the bottom of each bar to be the "top" of the bar chart
                 .attr("width", w/dataset.length - barPadding) //this sets the width of each bar
                 .attr("height", function(d){
-                    return d;
+                    return d * 4;
                 });
 
         </script>
