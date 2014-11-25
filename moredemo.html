@@ -59,10 +59,10 @@
                 
         var svg = d3.select("body")
                 .append("svg")
-                .attr("width", 500)
-                .attr("height", 100)
+                .attr("width", w)
+                .attr("height", h);
                 
-                var dataset = [
+                var dataset2 = [
                   [ 5,     20 ],
                   [ 480,   90 ],
                   [ 250,   50 ],
@@ -76,7 +76,7 @@
               ];
               
               svg.selectAll("circle")
-              .data("dataset")
+              .data("dataset2")
               .enter()
               .append("circle")
               .attr("cx", function(d){
