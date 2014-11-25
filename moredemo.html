@@ -72,11 +72,11 @@
         var xScale = d3.scale.linear()
                     .domain([0, d3.max(dataset, function(d){ return d[0];
                     })])
-                    .range([0, w - padding]);
+                    .range([padding, w - padding]);
         var yScale = d3.scale.linear()
                     .domain([0, d3.max(dataset, function(d){return d[1];
                     })])
-                    .range([(h - padding* 2), 0]);
+                    .range([(h - padding* 2), padding]);
         
 
         
