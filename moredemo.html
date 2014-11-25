@@ -56,13 +56,19 @@
                     return h - (d*4) +14;
                 })
                 .attr("text-anchor", "middle");
-                
+        </script>     
+        
+        <script type="text/javascript">
+        var w = 500;
+        var h = 100;
+        var barPadding = 1;
+        
         var svg = d3.select("body")
                 .append("svg")
                 .attr("width", w)
                 .attr("height", h);
                 
-                var dataset2 = [
+                var dataset = [
                   [ 5,     20 ],
                   [ 480,   90 ],
                   [ 250,   50 ],
@@ -76,7 +82,7 @@
               ];
               
               svg.selectAll("circle")
-              .data("dataset2")
+              .data("dataset")
               .enter()
               .append("circle")
               .attr("cx", function(d){
