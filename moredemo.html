@@ -31,12 +31,12 @@
                 .enter()
                 .append("rect")
                 .attr("x", function (d, i) {
-                    return i * (w/dataset.length);
+                    return i * (w/dataset.length); // this sets where each bar starts from
                 })
-                .attr("y", 0)
-                .attr("width", w/dataset.length - barPadding)
+                .attr("y", 50)
+                .attr("width", w/dataset.length - barPadding) //this sets the width of each bar
                 .attr("height", function(d){
-                    return d;
+                    return -d;
                 });
 
         </script>
