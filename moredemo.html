@@ -15,7 +15,48 @@
          </style>
     </head>
     <body>
-   
+        <script type="text/javascript">
+        var w = 500;
+        var h = 100;
+        var barPadding = 1;
+        
+        var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13, 11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
+        var svg = d3.select("body")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h)
+
+                svg.selectAll("rect")
+                .data(dataset)
+                .enter()
+                .append("rect")
+                .attr("x", function (d, i) {
+                    return i * (w/dataset.length); // this sets where each bar starts from
+                })
+                .attr("y", function(d) {return h - (d*4);}) //we are setting the bottom of each bar to be the "top" of the bar chart
+                .attr("width", w/dataset.length - barPadding) //this sets the width of each bar
+                .attr("height", function(d){
+                    return d * 10;
+                })
+                .attr("fill", function(d) {
+                    return "rgb(0," + (d * 10) + ", 0)" 
+                });
+                
+                svg.selectAll("text")
+                .data(dataset)
+                .enter()
+                .append("text")
+                .text(function(d) { //tells what value the text will print
+                    return d;
+                })
+                .attr("x", function(d, i) {  //the starting x position of the text relative to each bar
+                    return i * (w/dataset.length) + (w/dataset.length - barPadding)/2;
+                })
+                .attr("y", function (d){ //the starting y position of each text relative to each bar
+                    return h - (d*4) +14;
+                })
+                .attr("text-anchor", "middle");
+        </script>     
         
         <script type="text/javascript">
         var w = 500;
@@ -36,10 +77,10 @@
               .data("dataset")
               .enter()
               .append("circle")
-              .attr("cx", function(d){
+              .attr("cx", function(d) {
                   return d[0];
               })
-              .attr("cy", function(d){
+              .attr("cy", function(d) {
                   return d[1];
               })
               .attr("r", 5);
