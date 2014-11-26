@@ -137,7 +137,17 @@
             svg.append("g")
                 .attr("class", "axis")
                 .attr("transform", "translate(0," + (h - padding) + ")") //moves the xaxis from top to the bottom of the graph
-                .call(xAxis)
+                .call(xAxis);
+                
+              var yAxis = d3.svg.axis()
+                        .scale(yAxis)
+                        .orient(left)
+                        .ticks(5);
+                        
+            svg.append(g)
+                .attr("class", "axis")
+                .attr("transform", "translate(" + padding + ",0")
+                .call(yAxis);
               
 
         </script>
