@@ -81,8 +81,8 @@
         var xRange = Math.random() * 100;
         var yRange = Math.random() * 100;
         for (var i = 0; i < numDataPoints; i++) {
-            var newNumber1 = Math.round(xRange);
-            var newNumber2 = Math.round(yRange);
+            var newNumber1 = Math.round(Math.random() * xRange);
+            var newNumber2 = Math.round(Math.random() * yRange);
             dataset.push([newNumber1, newNumber2]);
         }
 
