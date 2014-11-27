@@ -16,9 +16,9 @@
 <body>
         <script type="text/javascript" src="http://d3js.org/d3.v3.min.js">
         
-        d3.select("body")
-                .append("p")
-                p.text("hello world");
+        d3.select("body").selectAll("p")
+                .enter()
+                .text("hello world");
         
         </script>
 </body>
