@@ -33,7 +33,7 @@
                         .domain([0, d3.max(dataset, function(d) {return d[0];})])
                         .range(0, w - padding);
                 var yScale = d3.scale.linear()
-                        .domain([0, (h - padding)])
+                        .domain([0, d3.max(dataset, function(d) {return d[1];})])
                         .range(h, 0);
                 
                 //Axes
