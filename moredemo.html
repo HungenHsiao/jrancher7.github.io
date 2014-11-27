@@ -145,7 +145,7 @@
                         
             svg.append("g")
                 .attr("class", "axis")
-                .attr("transform", "translate(" + (padding *2) + ",0)")
+                .attr("transform", "translate(" + padding + ",0)") //increasing the padding moves the yAxis to the right of the graph
                 .call(yAxis);
               
 
