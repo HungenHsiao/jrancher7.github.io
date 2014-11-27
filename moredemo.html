@@ -144,9 +144,9 @@
                         .orient("left")
                         .ticks(5);
                         
-            svg.append(g)
+            svg.append("g")
                 .attr("class", "axis")
-                .attr("transform", "translate(" + (padding *2) + ",0")
+                .attr("transform", "translate(" + (padding) + ",0")
                 .call(yAxis);
               
 
