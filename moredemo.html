@@ -77,12 +77,12 @@
         var h = 300;
         
         var dataset = [];
-        var numDataPoints = 50;
-        var xRange = Math.random() * 1000;
-        var yRange = Math.random() * 1000;
+        var numDataPoints = 15;
+        var xRange = Math.random() * 100;
+        var yRange = Math.random() * 100;
         for (var i = 0; i < numDataPoints; i++) {
-            var newNumber1 = Math.round(Math.random() * xRange);
-            var newNumber2 = Math.round(Math.random() * yRange);
+            var newNumber1 = Math.round(xRange);
+            var newNumber2 = Math.round(yRange);
             dataset.push([newNumber1, newNumber2]);
         }
 
