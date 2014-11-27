@@ -76,10 +76,16 @@
         var w = 500;
         var h = 300;
         
-        var dataset = [
-                [5, 20, 4], [480, 90, 10], [250, 50, 29], [100, 33, 3], [330, 95, 20],
-                [410, 12, 10], [475, 44, 10], [25, 67, 28], [85, 21, 20], [220, 88, 3],
-              ];
+        var dataset = [];
+        var numDataPoints = 50;
+        var xRange = Math.random() * 1000;
+        var yRange = Math.random() * 1000;
+        for (var i = 0; i < numDataPoints; i++) {
+            var newNumber1 = Math.round(Math.random() * xRange);
+            var newNumber2 = Math.round(Math.random() * yRange);
+            dataset.push([newNumber1, newNumber2]);
+        }
+
         var padding = 35;
         var xScale = d3.scale.linear()
                     .domain([0, d3.max(dataset, function(d){ return d[0];
