@@ -84,7 +84,7 @@
         var xScale = d3.scale.linear()
                     .domain([0, d3.max(dataset, function(d){ return d[0];
                     })])
-                    .range([padding, w - padding*2]);
+                    .range([padding, w - padding * 2]);
         var yScale = d3.scale.linear()
                     .domain([0, d3.max(dataset, function(d){return d[1];
                     })])
@@ -109,8 +109,7 @@
               })
               .attr("r", function(d) {
                   return Math.sqrt(d[1]);
-              })
-              ;
+              });
               
               svg.selectAll("text")
               .data(dataset)
@@ -127,7 +126,7 @@
               })
               .attr("fill", "blue")
               .attr("font-size", "20px")
-              .attr("family", "Arial");
+              .attr("font-family", "Arial");
               
               var xAxis = d3.svg.axis()
                         .scale(xScale)
@@ -146,7 +145,6 @@
                         
             svg.append("g")
                 .attr("class", "axis")
-                .attr("transform", "translate(" + padding + ",0")
                 .call(yAxis);
               
 
