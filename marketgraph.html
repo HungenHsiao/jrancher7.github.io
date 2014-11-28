@@ -101,15 +101,7 @@
         var w = 500;
         var h = 300;
         
-        var dataset = [];
-        var numDataPoints = 15;
-        var xRange = Math.random() * 100;
-        var yRange = Math.random() * 100;
-        for (var i = 0; i < numDataPoints; i++) {
-            var newNumber1 = Math.round(Math.random() * xRange);
-            var newNumber2 = Math.round(Math.random() * yRange);
-            dataset.push([newNumber1, newNumber2]);
-        }
+
         var padding = 35;
         var xScale = d3.scale.linear()
                     .domain([0, d3.max(dataset, function(d){ return d[0];
