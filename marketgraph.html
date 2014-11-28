@@ -45,7 +45,10 @@
                         .attr("class", "axis")
                         .call(xAxis);
                 
-                
+                var lineFunc = d3.svg.line()
+                        .x(function (d){return xScale(d[0];)})
+                        .y(function (d){return yScale(d[1];)})
+                        .interpolate("linear");
                 
         </script>
 </body>
