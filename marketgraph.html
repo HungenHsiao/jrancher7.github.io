@@ -66,42 +66,6 @@
                         .y(function (d){return yScale(d[1];)})
                         .interpolate("linear");
                 
-                svg.append('svg:path')
-  .attr('d', lineFunc(lineData))
-  .attr('stroke', 'blue')
-  .attr('stroke-width', 2)
-  .attr('fill', 'none');
-
-              
-             svg.selectAll("text")
-              .data(dataset)
-              .enter()
-              .append("text")
-              .text(function(d) {
-                  return d[0] +", "+ d[1];
-              })
-              .attr("x", function(d){
-                  return xScale(d[0]);
-              })
-              .attr("y", function(d){
-                  return yScale(d[1]);
-              })
-              .attr("fill", "blue")
-              .attr("font-size", "20px")
-              .attr("font-family", "Arial");          
-              
-  
-            svg.append("g")
-                .attr("class", "axis")
-                .attr("transform", "translate(0," + (h - padding) + ")") //moves the xaxis from top to the bottom of the graph
-                .call(xAxis);
-
-                        
-            svg.append("g")
-                .attr("class", "axis")
-                .attr("transform", "translate(" + padding + ",0)") //increasing the padding moves the yAxis to the right of the graph
-                .call(yAxis);
-                
         </script>
 </body>
 </html>
