@@ -55,7 +55,12 @@
                         .x(function (d){return xScale(d[0];)})
                         .y(function (d){return yScale(d[1];)})
                         .interpolate("linear");
-                        
+                
+                svg.append('svg:path')
+  .attr('d', lineFunc(lineData))
+  .attr('stroke', 'blue')
+  .attr('stroke-width', 2)
+  .attr('fill', 'none');
 
               
 /*              svg.selectAll("text")
