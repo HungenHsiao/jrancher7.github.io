@@ -43,7 +43,7 @@
                     .data(dataset)
                     .enter()
                     .append("text")
-                    .text("Hello World");
+                    .text("Hello World2");
 
                 //Scales
                 var xScale = d3.scale.linear()
@@ -68,13 +68,13 @@
 
                 svg.append("g")
                         .attr("class", "axis")
-                        .attr("transform", "translate(0,"+ h + ")")
+                        .attr("transform", "translate(0,"+ (h-padding) + ")")
                         .call(xAxis);
 
 console.log(padding);                        
                 svg.append("g")
                 .attr("class", "axis")
-                .attr("transform", "translate(" + padding + ",0)")
+                .attr("transform", "translate(" + 20 + ",0)")
                 .call(yAxis);
                 
 
