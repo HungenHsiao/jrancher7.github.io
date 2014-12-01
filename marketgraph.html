@@ -86,6 +86,7 @@
                 svg.append("g")
                         .attr("class", "axis")
                         .attr("transform", "translate(" + padding + ",0)")
+                        .attr("transform", "translate(0," + padding*2 + ")")                        
                         .call(yAxis);
                 
                 var lineFunc = d3.svg.line()
