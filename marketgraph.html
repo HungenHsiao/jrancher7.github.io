@@ -31,13 +31,20 @@
                     var newNumber2 = Math.round(Math.random() * yRange);
                     dataset.push([newNumber1, newNumber2]);
                 }
+
                 
                 //creating SVG canvas
                 var svg = d3.select("body")
                         .append("svg")
                         .attr("width", w)
                         .attr("height", h);
-                        
+                //test
+                svg.select("text")
+                    .data(dataset)
+                    .enter()
+                    .append("text")
+                    .text("Hello World");
+
                 //Scales
                 var xScale = d3.scale.linear()
                         .domain([0, d3.max(dataset, function(d) {return d[0];
@@ -70,8 +77,11 @@
                 .call(yAxis);
                 
                 var lineFunc = d3.svg.line()
-                        .x(function (d){return xScale(d[0];)})
-                        .y(function (d){return yScale(d[1];)})
+                        .x(function (d){
+                            return xScale(d[0]);
+                        })
+                        .y(function (d){return yScale(d[1]);
+                        })
                         .interpolate("linear");
                 
         </script>
