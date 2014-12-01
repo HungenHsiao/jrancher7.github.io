@@ -61,7 +61,7 @@
                 var xScale = d3.scale.linear()
                         .domain([0, d3.max(dataset, function(d) {return d[0];
                         })])
-                        .range([padding*2, w - padding*2]);
+                        .range([padding, w - padding*2]);
                 var yScale = d3.scale.linear()
                         .domain([0, d3.max(dataset, function(d) {return d[1];
                         })])
@@ -80,7 +80,7 @@
 
                 svg.append("g")
                         .attr("class", "axis")
-                        .attr("transform", "translate(padding,"+ (h-padding) + ")")
+                        .attr("transform", "translate(0,"+ (h-padding) + ")")
                         .call(xAxis);
         
                 svg.append("g")
