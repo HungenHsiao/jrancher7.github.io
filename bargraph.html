@@ -31,25 +31,36 @@
         var w = 1000;
         var h = 500;
         var barPadding = 1;
-        var database = [];
-        
-        $.getJSON( "/player_data.json", function( data ) {
-          var player = data;
-          $.each( player, function(name, price) {
-            database.push([player.name, player.price]);
-            })}
-            )
-        
+        var padding = 20;
 
-/*        var dataset = [];
-        for (i = 1; i < player_array.length; i++) {
-        	var player = player_array[i];
-        	var player_rating = parseInt(player['rating']);
-        	dataset.push(player_rating);
-        }
-        console.log(dataset);
-*/
-       var svg = d3.select("body")
+        var data_loaded = function(data) {
+            var dataset = [];
+            $.each(data, function(position, player) {     // position = index (interger meaning the position of the object in the array); player = object of the array
+                dataset.push(player["price"]);
+            });
+
+            var yScale = d3.scale.log()
+                .domain([1000, d3.max(dataset, function(d) {return d;})])
+                .range([padding, h-padding]);
+
+            /*var max_array_value = function(arr) {
+                var price_max = 0;
+                for (i = 0; i < arr.length; i++) {
+                    var price = dataset[i];
+
+                    if (price > price_max) {
+                        price_max = price;
+                    }
+                }
+                return price_max;
+            };*/
+
+            var colorScale = d3.scale.log()
+                .domain([1000, d3.max(dataset, function(d) {return d;})])
+                .range([0, 255]);
+
+
+            var svg = d3.select("body")
                 .append("svg")
                 .attr("width", w)
                 .attr("height", h)
@@ -60,16 +71,17 @@
                 .attr("x", function (d, i) {
                     return i * (w/dataset.length); // this sets where each bar starts from
                 })
-                .attr("y", function(d) {return h - (d*4);}) //we are setting the bottom of each bar to be the "top" of the bar chart
+                .attr("y", function(d) {return h - yScale(d);}) //we are setting the bottom of each bar to be the "top" of the bar chart
                 .attr("width", w/dataset.length - barPadding) //this sets the width of each bar
                 .attr("height", function(d){
-                    return d * 10;
+                    return yScale(d);
                 })
                 .attr("fill", function(d) {
-                    return "rgb(0," + (d * 30) + ", 0)" 
+                    return "rgb(0," + Math.round(colorScale(d)) + ", 0)" 
                 });
+
                 
-                svg.selectAll("text")
+            svg.selectAll("text")
                 .data(dataset)
                 .enter()
                 .append("text")
@@ -82,17 +94,29 @@
                 .attr("y", function (d){ //the starting y position of each text relative to each bar
                     return h - (d*4) +14;
                 })
-                .attr("text-anchor", "middle");	         
+                .attr("text-anchor", "middle");
+        }
 
 
+        var failed_to_load = function () {
+            console.log("players file failed to load!");
+        }
 
-
-
-
-
-
+        $.getJSON("/player_data.json", data_loaded)
+            .fail(failed_to_load);
+            
+            
+/*        var dataset = [];
+        for (i = 1; i < player_array.length; i++) {
+        	var player = player_array[i];
+        	var player_rating = parseInt(player['rating']);
+        	dataset.push(player_rating);
+        }
+        console.log(dataset);
+*/
+       	         
+                
   //      });
-
  
         </script>     
     </body>
