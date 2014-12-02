@@ -31,10 +31,10 @@
         var w = 1000;
         var h = 500;
         var barPadding = 1;
-
+        var database = [];
+        
         $.getJSON( "/player_data.json", function( data ) {
-          var player = $data;
-          var database = $[];
+          var player = data;
           $.each( player, function(name, price) {
             database.push([player.name, player.price]);
             })}
