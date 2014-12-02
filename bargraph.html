@@ -33,8 +33,8 @@
         var barPadding = 1;
 
         $.getJSON( "/player_data.json", function( data ) {
-          var player = data;
-          var database = [];
+          var player = $data;
+          var database = $[];
           $.each( player, function(name, price) {
             database.push([player.name, player.price]);
             })}
