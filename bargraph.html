@@ -24,13 +24,8 @@
                     font-size: 15px;
                 }
                 
-                .d3-tip {
-                    line-height: 1;
-                    font-weight: bold;
-                    padding: 12px;
-                    background: rgba(0, 0, 0, 0.8);
-                    color: #fff;
-                    border-radius: 2px;
+                rect.highlight {
+                    fill: red;
                 }
                 
                 
@@ -186,8 +181,12 @@
                 .attr("fill", function(d) {
                     return "rgb(0," + Math.round(colorScale(d)) + ", 0)" 
                 })
-                .on('mouseover', tip.show)
-                .on('mouseout', tip.hide);
+                .on("mouseover", function() {
+                    d3.select(this).classed("highlight", true);
+                })
+                .on("mouseout", function() {
+                    d3.select(this).classed("highlight", false);
+                });
                 
             var tip = d3.tip()
                 .attr('class', 'd3-tip')
