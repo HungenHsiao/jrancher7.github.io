@@ -23,7 +23,8 @@
                     font-family: sans-serif;
                     font-size: 15px;
                 }
-                .bar:hover {
+                
+                .rect.highlight {
                     fill: red;
                 }
                 
@@ -111,7 +112,14 @@
                     return "rgb(0," + Math.round(colorScale(d)) + ", 0)" 
                 })
                 .on('mouseover', tip.show)
-                .on('mouseout', tip.hide);
+                .on('mouseout', tip.hide)
+                .on("mouseover", function() {
+                    d3.select(this).classed("highlight", true);
+                })
+                .on("mouseout", function() {
+                    d3.select(this).classed("highlight", false);
+                });
+                
                 
             svg.selectAll("text")
                 .data(dataset)
