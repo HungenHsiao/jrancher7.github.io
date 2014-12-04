@@ -142,6 +142,10 @@
         $.getJSON("/player_data.json", data_loaded)
             .fail(failed_to_load);
             
+        function type(d) {
+              d.frequency = +d.frequency;
+              return d;
+            }
         
         
         
