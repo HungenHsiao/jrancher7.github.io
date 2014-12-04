@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Bar Graph</title>
+        <script src="http://d3js.org/d3.v3.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+        <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+        <style type="text/css">
+                p {
+                    font-family: Arial;
+                    font-size: 40px;
+                    color: blue;
+                }
+                
+                .axis path,
+                .axis line {
+                    fill: none;
+                    stroke: black;
+                    shape-rendering: crispEdges;
+                }
+                .axis text {
+                    font-family: sans-serif;
+                    font-size: 15px;
+                }
+                
+                rect.highlight {
+                    fill: red;
+                }
+                
+                
+         </style>
+    </head>
+    <body>
+
+        <script type="text/javascript">
+        
+        var margin = {top: 20, right: 20, bottom: 20, left: 20};
+        var w = 1000 - margin.left - margin.right;
+        var h = 500 - margin.top - margin.bottom;
+        var barPadding = 1;
+
+        var data_loaded = function(data) {
+            var dataset = [];
+            $.each(data, function(position, player) {     // position = index (interger meaning the position of the object in the array); player = object of the array
+                dataset.push(player["price"]);
+            });
+
+            var yScale = d3.scale.linear()
+                .domain([0, d3.max(dataset, function(d) {return d;})])
+                .range([0, h]);
+
+            var colorScale = d3.scale.linear()
+                .domain([0, d3.max(dataset, function(d) {return d;})])
+                .range([0, 255]);
+                
+            var tip = d3.tip()
+                .attr("class", "d3-tip")
+                .offset([-10,0])
+                .html(function(d) {
+                        return "<strong>Price:</strong> <span style='color:red'>" + d + "</span>";
+                })
+
+
+            var svg = d3.select("body")
+                .append("svg")
+                .attr("width", w + margin.left + margin.right)
+                .attr("height", h + margin.top + margin.bottom);
+                svg.call(tip);
+                svg.selectAll("rect")
+                .data(dataset)
+                .enter()
+                .append("rect")
+                .attr("x", function (d, i) {
+                    return i * (w/dataset.length); // this sets where each bar starts from
+                })
+                .attr("y", function(d) {return h - yScale(d);}) //we are setting the bottom of each bar to be the "top" of the bar chart
+                .attr("width", w/dataset.length - barPadding) //this sets the width of each bar
+                .attr("height", function(d){
+                    return yScale(d);
+                })
+                .attr("fill", function(d) {
+                    return "rgb(0," + Math.round(colorScale(d)) + ", 0)" 
+                })
+                .on("mouseover", function() {
+                    d3.select(this).classed("highlight", true);
+                })
+                .on("mouseout", function() {
+                    d3.select(this).classed("highlight", false);
+                });
+                
+            svg.selectAll("text")
+                .data(dataset)
+                .enter()
+                .append("text")
+                .text(function(d) { //tells what value the text will print
+                    return d;
+                })
+                .attr("x", function(d, i) {  //the starting x position of the text relative to each bar
+                    return i * (w/dataset.length) + (w/dataset.length - barPadding)/2;
+                })
+                .attr("y", function (d){ //the starting y position of each text relative to each bar
+                    return h - (d*4) +14;
+                })
+                .attr("text-anchor", "middle");
+        }
+
+
+        var failed_to_load = function () {
+            console.log("players file failed to load!");
+        }
+
+        $.getJSON("/player_data.json", data_loaded)
+            .fail(failed_to_load);
+            
+        
+        
+        
+    </script>
+    </body>
+</html>
