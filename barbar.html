@@ -24,7 +24,7 @@
                     font-size: 15px;
                 }
                 
-                .rect.highlight {
+                .rect:hover {
                     fill: red;
                 }
                 
@@ -112,13 +112,7 @@
                     return "rgb(0," + Math.round(colorScale(d)) + ", 0)" 
                 })
                 .on('mouseover', tip.show)
-                .on('mouseout', tip.hide)
-                .on("mouseover", function() {
-                    d3.select(this).classed("highlight", true);
-                })
-                .on("mouseout", function() {
-                    d3.select(this).classed("highlight", false);
-                });
+                .on('mouseout', tip.hide);
                 
                 
             svg.selectAll("text")
