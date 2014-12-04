@@ -72,22 +72,22 @@
         var data_loaded = function(data) {
             var dataset = [];
             $.each(data, function(position, player) {     // position = index (interger meaning the position of the object in the array); player = object of the array
-                dataset.push(player["price"]);
+                dataset.push(player);
             });
 
             var yScale = d3.scale.linear()
-                .domain([0, d3.max(dataset, function(d) {return d;})])
+                .domain([0, d3.max(dataset, function(d["price"]) {return d["price"];})])
                 .range([0, h]);
 
             var colorScale = d3.scale.linear()
-                .domain([0, d3.max(dataset, function(d) {return d;})])
+                .domain([0, d3.max(dataset, function(d["price"]) {return d["price"];})])
                 .range([0, 255]);
                 
             var tip = d3.tip()
                 .attr("class", "d3-tip")
                 .offset([-10,0])
                 .html(function(d) {
-                        return "<strong>Price:</strong> <span style='color:red'>" + d + "</span>";
+                        return "<strong>Price:</strong> <span style='color:red'>" + d["price"] + "</span>";
                 })
 
 
@@ -103,13 +103,13 @@
                 .attr("x", function (d, i) {
                     return i * (w/dataset.length); // this sets where each bar starts from
                 })
-                .attr("y", function(d) {return h - yScale(d);}) //we are setting the bottom of each bar to be the "top" of the bar chart
+                .attr("y", function(d) {return h - yScale(d["price"]);}) //we are setting the bottom of each bar to be the "top" of the bar chart
                 .attr("width", w/dataset.length - barPadding) //this sets the width of each bar
-                .attr("height", function(d){
+                .attr("height", function(d["price"]){
                     return yScale(d);
                 })
                 .attr("fill", function(d) {
-                    return "rgb(0," + Math.round(colorScale(d)) + ", 0)" 
+                    return "rgb(0," + Math.round(colorScale(d["price"])) + ", 0)" 
                 })
                 .on('mouseover', tip.show)
                 .on('mouseout', tip.hide);
@@ -124,5 +124,8 @@
             .fail(failed_to_load);
 
     </script>
+        <p>
+            Changes were made!
+        </p>
     </body>
 </html>
