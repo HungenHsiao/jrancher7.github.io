@@ -88,12 +88,6 @@
                 .orient("bottom")
                 .ticks(10);
 
-        
-            svg.append("g")
-                    .attr("class", "axis")
-                    .attr("transform", "translate(0,"+ (h) + ")")
-                    .call(xAxis);
-
             var colorScale = d3.scale.linear()
                 .domain([0, d3.max(dataset, function(d) {return d["price"];})])
                 .range([0, 255]);
