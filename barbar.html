@@ -64,7 +64,7 @@
         <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
         <script type="text/javascript">
         
-        var margin = {top: 20, right: 20, bottom: 20, left: 40};
+        var margin = {top: 20, right: 20, bottom: 20, left: 20};
         var w = 1000 - margin.left - margin.right;
         var h = 500 - margin.top - margin.bottom;
         var barPadding = 1;
@@ -87,6 +87,11 @@
                 .scale(xScale)
                 .orient("bottom")
                 .ticks(10);
+                
+            svg.append("g")
+                .attr("class", "axis")
+                .attr("transform", "translate(" + margin.left + "," + w-margin.bottom + ")")
+                .call(xAxis);
 
             var colorScale = d3.scale.linear()
                 .domain([0, d3.max(dataset, function(d) {return d["price"];})])
@@ -136,7 +141,7 @@
 
     </script>
         <p>
-            Changes were made yet again!
+            Changes were made again!
         </p>
     </body>
 </html>
