@@ -86,11 +86,7 @@
             var xAxis = d3.svg.axis()
                 .scale(xScale)
                 .orient("bottom");
-                
-            svg.append("g")
-                .attr("class", "axis")
-                .attr("transform", "translate(0," + h + ")")
-                .call(xAxis);
+
 
             var colorScale = d3.scale.linear()
                 .domain([0, d3.max(dataset, function(d) {return d["price"];})])
@@ -140,7 +136,7 @@
 
     </script>
         <p>
-            Changes were made again!
+            Changes were made yet again!
         </p>
     </body>
 </html>
