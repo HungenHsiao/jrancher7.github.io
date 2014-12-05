@@ -103,7 +103,9 @@
             var svg = d3.select("body")
                 .append("svg")
                 .attr("width", w + margin.left + margin.right)
-                .attr("height", h + margin.top + margin.bottom);
+                .attr("height", h + margin.top + margin.bottom)
+                svg.append("g")
+                .attr("transform", "translate("+ margin.left + "," + margin.top + ")");
                 svg.call(tip);
                 svg.selectAll("rect")
                 .data(dataset)
