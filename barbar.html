@@ -83,9 +83,15 @@
                 .domain([0, d3.max(dataset, function(d) {return d;})])
                 .range([margin.left, w]);
                 
-            var xAxis = d3.svg.axis()
-                .scale(xScale)
-                .orient("bottom");
+            var yAxis = d3.svg.axis()
+                .scale(yScale)
+                .orient("right");
+                
+                            
+            svg.append("g")
+                .attr("class", "axis")
+                .attr("transform", "translate(" + margin.left + ",0)")
+                .call(xAxis);
 
 
             var colorScale = d3.scale.linear()
@@ -136,7 +142,7 @@
 
     </script>
         <p>
-            Changes were made yet again!
+            Changes were made again!
         </p>
     </body>
 </html>
