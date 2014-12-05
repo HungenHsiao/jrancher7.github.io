@@ -79,10 +79,7 @@
                 .domain([0, d3.max(dataset, function(d) {return d["price"];})])
                 .range([0, h]);
                 
-            var yAxis = d3.svg.xis()
-                .scale(yScale)
-                .orient("left")
-                .ticks(7);
+
 
             var colorScale = d3.scale.linear()
                 .domain([0, d3.max(dataset, function(d) {return d["price"];})])
@@ -130,7 +127,7 @@
 
     </script>
         <p>
-            Changes were made yet again!
+            Changes were made again!
         </p>
     </body>
 </html>
