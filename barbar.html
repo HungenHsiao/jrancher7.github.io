@@ -82,6 +82,11 @@
             var xScale = d3.scale.linear()
                 .domain([0, d3.max(dataset, function(d) {return d;})])
                 .range([margin.left, w]);
+                
+            var xAxis = d3.svg.axis()
+                .scale(xScale)
+                .orient("bottom")
+                .ticks(10);
 
 
             var colorScale = d3.scale.linear()
