@@ -79,8 +79,8 @@
                 .domain([0, d3.max(dataset, function(d) {return d["price"];})])
                 .range([0, h]);
                 
-            var yAxis = d3.axis()
-                .axis(yScale)
+            var yAxis = d3.svg.xis()
+                .scale(yScale)
                 .orient("left")
                 .ticks(7);
 
