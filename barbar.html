@@ -89,7 +89,7 @@
                 
             svg.append("g")
                 .attr("class", "axis")
-                .attr("transform", "translate(" + margin.left + "," + w-margin.bottom + ")")
+                .attr("transform", "translate(0," + h-margin.bottom + ")")
                 .call(xAxis);
 
             var colorScale = d3.scale.linear()
