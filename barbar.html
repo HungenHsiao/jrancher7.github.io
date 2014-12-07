@@ -90,12 +90,6 @@
                 .scale(yScale)
                 .orient("right");
                 
-            svg.append("g")
-                .scale(yScale)
-                .attr("class", "axis")
-                .call(yAxis);
-                
-            
             var colorScale = d3.scale.linear()
                 .domain([0, d3.max(dataset, function(d) {return d["price"];})])
                 .range([0, 255]);
@@ -126,12 +120,18 @@
                 .attr("width", barWidth) //this sets the width of each bar
                 .attr("height", function(d){
                     return yScale(d["price"]);
-          n      })
+                })
                 .attr("fill", function(d) {
                     return "rgb(0," + Math.round(colorScale(d["price"])) + ", 0)" 
                 })
                 .on('mouseover', tip.show)
                 .on('mouseout', tip.hide);
+
+            svg.append("g")
+                .scale(yScale)
+                .attr("class", "axis")
+                .call(yAxis);                
+                
         }
 
 
