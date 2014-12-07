@@ -116,7 +116,7 @@
                 .attr("x", function (d, i) {
                     return xScale(i); // this sets where each bar starts from
                 })
-                .attr("y", function(d) {return h - yScale(d["price"]);}) //we are setting the bottom of each bar to be the "top" of the bar chart
+                .attr("y", function(d) {return (h+margin.top) - yScale(d["price"]);}) //we are setting the bottom of each bar to be the "top" of the bar chart
                 .attr("width", barWidth) //this sets the width of each bar
                 .attr("height", function(d){
                     return yScale(d["price"]);
