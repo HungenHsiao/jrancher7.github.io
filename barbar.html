@@ -84,7 +84,7 @@
             
             var y_axis_Scale = d3.scale.linear()
                 .domain([0, d3.max(dataset, function(d) {return d["price"];})])
-                .range([h, 0]);
+                .range([(h+margin.top), 0]);
             
             var xScale = d3.scale.linear()
                 .domain([0, dataset.length])
@@ -158,7 +158,7 @@
             
     </script>
         <p>
-            Changes were made yet yet yet again! And it works! :)
+            Changes were made yet yet yet yet again! And it works! :)
         </p>
     </body>
 </html>
