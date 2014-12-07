@@ -87,12 +87,6 @@
                 .scale(yScale)
                 .orient("right");
                 
-                            
-            svg.append("g")
-                .attr("class", "axis")
-                .attr("transform", "translate(" + margin.left + ",0)")
-                .call(xAxis);
-
 
             var colorScale = d3.scale.linear()
                 .domain([0, d3.max(dataset, function(d) {return d["price"];})])
