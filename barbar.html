@@ -90,6 +90,11 @@
                 .scale(yScale)
                 .orient("right");
                 
+            svg.append("g")
+                .scale(yScale)
+                .attr("class", "axis")
+                .call(yAxis);
+                
             
             var colorScale = d3.scale.linear()
                 .domain([0, d3.max(dataset, function(d) {return d["price"];})])
@@ -139,7 +144,7 @@
             
     </script>
         <p>
-            Changes were made yet yet yet again!
+            Changes were made yet again!
         </p>
     </body>
 </html>
