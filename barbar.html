@@ -68,7 +68,7 @@
         var w = 1000 - margin.left - margin.right;
         var h = 500 - margin.top - margin.bottom;
         var barPadding = 1;
-        var barWidth = (w-margin.left-margin.right)/dataset.length;
+
 
         var data_loaded = function(data) {
             var dataset = [];
@@ -76,6 +76,7 @@
                 dataset.push(player);
             });
 
+            var barWidth = (w-margin.left-margin.right)/dataset.length;
 
             var yScale = d3.scale.linear()
                 .domain([0, d3.max(dataset, function(d) {return d["price"];})])
@@ -135,10 +136,10 @@
 
         $.getJSON("/player_data.json", data_loaded)
             .fail(failed_to_load);
-
+            
     </script>
         <p>
-            Changes were made yet yet again!
+            Changes were made yet again!
         </p>
     </body>
 </html>
