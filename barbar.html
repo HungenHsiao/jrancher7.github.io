@@ -137,7 +137,12 @@
                 .attr("transform", "translate(" + margin.left + ",0)")
                 .call(yAxis);                
 
+            var x_axis_Scale = d3.scale.linear()
+                .domain([d3.min(dataset, function(d){return d["name"];}), d3.max(data, function(d) {return d["name"];})])
+                .range([margin.left, w-margin.right]);
+
             var xAxis = d3.svg.axis()
+                .scale(x_axis_Scale)
                 .orient("bottom");
 
             svg.append("g")
@@ -157,7 +162,7 @@
             
     </script>
         <p>
-            Changes were made again! And it works! :)
+            Changes were made yet again! And it works! :)
         </p>
     </body>
 </html>
