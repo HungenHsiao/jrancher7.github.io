@@ -68,6 +68,7 @@
         var w = 1000 - margin.left - margin.right;
         var h = 500 - margin.top - margin.bottom;
         var barPadding = 1;
+        var barWidth = (w-margin.left-margin.right)/dataset.length;
 
         var data_loaded = function(data) {
             var dataset = [];
@@ -75,19 +76,20 @@
                 dataset.push(player);
             });
 
+
             var yScale = d3.scale.linear()
                 .domain([0, d3.max(dataset, function(d) {return d["price"];})])
                 .range([0, h]);
             
             var xScale = d3.scale.linear()
-                .domain([0, d3.max(dataset, function(d) {return d;})])
-                .range([margin.left, w]);
+                .domain([0, dataset.length-1])
+                .range([margin.left, w-margin.right]);
                 
             var yAxis = d3.svg.axis()
                 .scale(yScale)
                 .orient("right");
                 
-
+            
             var colorScale = d3.scale.linear()
                 .domain([0, d3.max(dataset, function(d) {return d["price"];})])
                 .range([0, 255]);
@@ -97,7 +99,7 @@
                 .offset([-10,0])
                 .html(function(d) {
                         return  d["name"] + ": " + "<span style='color:orangered'>" + d["price"] + "</span>";
-                })
+                });
 
 
             var svg = d3.select("body")
@@ -112,13 +114,13 @@
                 .enter()
                 .append("rect")
                 .attr("x", function (d, i) {
-                    return i * xScale(w/dataset.length); // this sets where each bar starts from
+                    return (i * (w/dataset.length))+margin.left; // this sets where each bar starts from
                 })
                 .attr("y", function(d) {return h - yScale(d["price"]);}) //we are setting the bottom of each bar to be the "top" of the bar chart
-                .attr("width", w/dataset.length - barPadding) //this sets the width of each bar
+                .attr("width", barWidth) //this sets the width of each bar
                 .attr("height", function(d){
                     return yScale(d["price"]);
-                })
+          n      })
                 .attr("fill", function(d) {
                     return "rgb(0," + Math.round(colorScale(d["price"])) + ", 0)" 
                 })
@@ -129,14 +131,14 @@
 
         var failed_to_load = function () {
             console.log("players file failed to load!");
-        }
+        };
 
         $.getJSON("/player_data.json", data_loaded)
             .fail(failed_to_load);
 
     </script>
         <p>
-            Changes were made yet again!
+            Changes were made yet yet again!
         </p>
     </body>
 </html>
