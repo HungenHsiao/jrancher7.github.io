@@ -88,6 +88,7 @@
                 
             var yAxis = d3.svg.axis()
                 .scale(yScale)
+                .attr("transform", "translate(" + margin.left + ",0)")
                 .orient("right");
                 
             var colorScale = d3.scale.linear()
@@ -144,7 +145,7 @@
             
     </script>
         <p>
-            Changes were made yet yet yet again!
+            Changes were made yet again!
         </p>
     </body>
 </html>
