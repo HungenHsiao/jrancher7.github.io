@@ -86,11 +86,6 @@
                 .domain([0, dataset.length])
                 .range([margin.left, w-margin.right]);
                 
-            var yAxis = d3.svg.axis()
-                .scale(yScale)
-                .attr("transform", "translate(" + margin.left + ",0)")
-                .orient("right");
-                
             var colorScale = d3.scale.linear()
                 .domain([0, d3.max(dataset, function(d) {return d["price"];})])
                 .range([0, 255]);
@@ -127,6 +122,11 @@
                 })
                 .on('mouseover', tip.show)
                 .on('mouseout', tip.hide);
+
+            var yAxis = d3.svg.axis()
+                .scale(yScale)
+                .attr("transform", "translate(" + margin.left + ",0)")
+                .orient("right");
 
             svg.append("g")
                 .scale(yScale)
