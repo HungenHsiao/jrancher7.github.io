@@ -137,17 +137,13 @@
                 .attr("transform", "translate(" + margin.left + ",0)")
                 .call(yAxis);                
 
-            var x_axis_Scale = d3.scale.linear()
-                .domain([0, d3.max(data, function(d) {return d;})])
-                .range([margin.left, w-margin.right]);
-
             var xAxis = d3.svg.axis()
-                .scale(x_axis_Scale)
+                .scale(xScale)
                 .orient("bottom");
 
             svg.append("g")
                 .attr("class", "axis")
-                .attr("transform", "translate(0," + h+margin.top + ")")
+                .attr("transform", "translate(0," + (h+margin.top) + ")")
                 .call(xAxis);                
                 
         }
@@ -162,7 +158,7 @@
             
     </script>
         <p>
-            Changes were made yet yet again! And it works! :)
+            Changes were made yet yet yet again! And it works! :)
         </p>
     </body>
 </html>
