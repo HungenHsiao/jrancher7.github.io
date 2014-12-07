@@ -20,7 +20,7 @@
                     shape-rendering: crispEdges;
                 }
                 .axis text {
-                    font-family: sans-serif;
+                    font-family: arial;
                     font-size: 15px;
                 }
                 
@@ -64,8 +64,8 @@
         <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
         <script type="text/javascript">
         
-        var margin = {top: 20, right: 20, bottom: 20, left: 50};
-        var w = 1000 - margin.left - margin.right;
+        var margin = {top: 20, right: 20, bottom: 20, left: 100};
+        var w = 1000;
         var h = 500 - margin.top - margin.bottom;
         var barPadding = 1;
 
@@ -79,6 +79,10 @@
             var barWidth = (w-margin.left-margin.right)/dataset.length;
 
             var yScale = d3.scale.linear()
+                .domain([0, d3.max(dataset, function(d) {return d["price"];})])
+                .range([0, h]);
+            
+            var y_axis_Scale = d3.scale.linear()
                 .domain([0, d3.max(dataset, function(d) {return d["price"];})])
                 .range([h, 0]);
             
@@ -112,7 +116,7 @@
                 .attr("x", function (d, i) {
                     return xScale(i); // this sets where each bar starts from
                 })
-                .attr("y", function(d) {return yScale(d["price"]);}) //we are setting the bottom of each bar to be the "top" of the bar chart
+                .attr("y", function(d) {return h - yScale(d["price"]);}) //we are setting the bottom of each bar to be the "top" of the bar chart
                 .attr("width", barWidth) //this sets the width of each bar
                 .attr("height", function(d){
                     return yScale(d["price"]);
@@ -122,7 +126,8 @@
                 })
                 .on('mouseover', tip.show)
                 .on('mouseout', tip.hide);
-
+            
+            
             var yAxis = d3.svg.axis()
                 .scale(yScale)
                 .orient("left");
@@ -130,7 +135,7 @@
             svg.append("g")
                 .attr("class", "axis")
                 .attr("transform", "translate(" + margin.left + ",0)")
-                .call(yAxis);                
+                .call(y_axis_Scale);                
                 
         }
 
@@ -144,7 +149,7 @@
             
     </script>
         <p>
-            Changes were made yet yet yet again! And it works! :)
+            Changes were made yet yet yet yet again! And it works! :)
         </p>
     </body>
 </html>
