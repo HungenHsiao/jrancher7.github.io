@@ -60,10 +60,18 @@
                                 return {date: d.date, temperature: +d[name]}
                         })
                 })
+
+                x_scale.domain(d3.extent(data, function(d) {
+                return d.date;
+                }));
+                y_scale.domain(d3.extent(data, function(d) {
+                return d.temperature;
+                }));
                 console.log(cities);
         });
         
 
+        
         
                 
         
