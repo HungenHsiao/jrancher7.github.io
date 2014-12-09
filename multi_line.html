@@ -23,10 +23,21 @@
         
         var y_scale = d3.scale.linear()
                 .range([height, 0]);
+         
+        //Axis for the graph
+        var x_axis = d3.svg.axis()
+                .scale(x_scale)
+                .orient("bottom")
+                .ticks(5);
+                
+        var y_axis = d3.svg.axis()
+                .scale(y_axis)
+                .orient("left")
+                .ticks(5);
         
         //Parse date
         var parse_date = d3.time.format("%Y-%m-%d").parse;
-        console.log(parse_date('2011-03-05'));
+        console.log(parse_date('2011-03-05'));  //test to see how this function works (I can be removed)
         
         //SVG canvas        
         var svg = d3.select("body")
@@ -36,14 +47,23 @@
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
                 
-        /*Get data
+        //Get data
         d3.tsv("multi_line.tsv", function(error, data) {
+                .domain(d3.keys(data[0]).filter(function(key){return key !== "date";}));
                 data.forEach(function(d){
-                        d.date = d.date,
-                        d.
+                        d.date = parse_date(d.date);
+                });
+                
+                var cities = .domain().map(function(name){
+                        name: name;
+                        values: data.map(function(d){
+                                return {date: d.date, temperature: +d[name]}
+                        })
                 })
-        })
-        */
+        });
+        
+        console.log(cities);
+        
                 
         
 
@@ -52,7 +72,7 @@
                 
     </script>
         <p>
-                Changes were made again!
+                Changes were made yet again!
         </p>
 </body>
 </html>
