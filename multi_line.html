@@ -54,7 +54,7 @@
                         d.date = parse_date(d.date);
                 });
                 
-                var cities = .domain().map(function(name){
+                var cities = x_scale.domain().map(function(name){
                         name: name;
                         values: data.map(function(d){
                                 return {date: d.date, temperature: +d[name]}
