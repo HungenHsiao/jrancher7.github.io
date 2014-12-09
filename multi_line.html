@@ -25,8 +25,8 @@
                 .range([height, 0]);
         
         //Parse date
-        var parse_date = d3.time.format("%Y-%m-%d").parse();
-        console.log(parse_date(20110305));
+        var parse_date = d3.time.format("%Y-%m-%d").parse;
+        console.log(parse_date("20110305"));
         
         //SVG canvas        
         var svg = d3.select("body")
@@ -52,7 +52,7 @@
                 
     </script>
         <p>
-                Changes were made again!
+                Changes were made!
         </p>
 </body>
 </html>
