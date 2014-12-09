@@ -64,10 +64,10 @@
                 x_scale.domain(d3.extent(data, function(d) {
                 return d.date;
                 }));
-                y_scale.domain(d3.extent(data, function(d) {
-                return d.temperature;
+                y_scale.domain(d3.extent(cities, function(c) {
+                return c.temperature;
                 }));
-                console.log(data[1]);
+                console.log("Austin".values[1]);
         });
         
 
@@ -81,7 +81,7 @@
                 
     </script>
         <p>
-                Changes were made yet again!
+                Changes were made again!
         </p>
 </body>
 </html>
