@@ -49,7 +49,7 @@
                 
         //Get data
         d3.tsv("multi_line.tsv", function(error, data) {
-                .domain(d3.keys(data[0]).filter(function(key){return key !== "date";}));
+                x_scale.domain(d3.keys(data[0]).filter(function(key){return key !== "date";}));
                 data.forEach(function(d){
                         d.date = parse_date(d.date);
                 });
