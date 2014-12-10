@@ -41,6 +41,13 @@
         var parse_date = d3.time.format("%Y-%m-%d").parse;
         console.log(parse_date('2011-03-05'));  //test to see how this function works (I can be removed)
         
+        var value_line = d3.svg.line()
+                .interpolate("basis")
+                .x(function(d) {
+                        return x_scale(d.date);
+                })
+                .y(function(d) {return y_scale(d["San_Francisco"]);});
+        
         //SVG canvas        
         var svg = d3.select("body")
                 .append("svg")
@@ -72,13 +79,6 @@
                         }),
                 ]);
                 
-                var value_line = d3.svg.line()
-                        .interpolate("basis")
-                        .x(function(d) {
-                                return x_scale(d.date);
-                        })
-                        .y(function(d) {return y_scale(d["San_Francisco"]);});
-                        
                 svg.append("path")
                         .attr("d", value_line(data));
                 
