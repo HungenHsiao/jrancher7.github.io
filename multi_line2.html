@@ -67,11 +67,13 @@
                 var cities = d3.keys(data[0]).filter(function(key) {return key !== "date";});
                 data.forEach(function(d){
                         d.date = parse_date(d.date);
-                var dataset = function(cities) {
-                        for (i = 0; i < cities.length; i++) {
-                                var city = dataset[i]
-                                d.dataset[i] = +d.dataset[i];
-                }}});
+                        var dataset = function(cities) {
+                                for (i = 0; i < cities.length; i++) {
+                                        var city = dataset[i];
+                                        d.dataset[i] = +d.dataset[i];
+                                }
+                        }
+                });
                 
                 x_scale.domain(d3.extent(data, function(d) {
                         return d.date;
