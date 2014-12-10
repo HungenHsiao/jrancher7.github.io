@@ -51,34 +51,6 @@
                 .orient("left")
                 .ticks(5); 
         
-                
-        var value_line = d3.svg.line()
-                .interpolate("basis")
-                .x(function(d) {
-                        return x_scale(d.date);
-                })
-                .y(function(d) {
-                        return y_scale(d.newyork);
-                });
-                
-        var value_line2 = d3.svg.line()
-                .interpolate("basis")
-                .x(function(d) {
-                        return x_scale(d.date);
-                })
-                .y(function(d) {
-                        return y_scale(d.sanfran);
-                });       
-                
-        var value_line3 = d3.svg.line()
-                .interpolate("basis")
-                .x(function(d) {
-                        return x_scale(d.date);
-                })
-                .y(function(d) {
-                        return y_scale(d.austin);
-                });        
-        
         //Parse date
         var parse_date = d3.time.format("%Y%m%d").parse;
 
@@ -106,6 +78,33 @@
                                 return d.newyork;
                 })]);
                 
+                var value_line = d3.svg.line()
+                        .interpolate("basis")
+                        .x(function(d) {
+                                return x_scale(d.date);
+                        })
+                        .y(function(d) {
+                                return y_scale(d.newyork);
+                        });
+                        
+                var value_line2 = d3.svg.line()
+                        .interpolate("basis")
+                        .x(function(d) {
+                                return x_scale(d.date);
+                        })
+                        .y(function(d) {
+                                return y_scale(d.sanfran);
+                        });       
+                        
+                var value_line3 = d3.svg.line()
+                        .interpolate("basis")
+                        .x(function(d) {
+                                return x_scale(d.date);
+                        })
+                        .y(function(d) {
+                                return y_scale(d.austin);
+                        });  
+                
                 svg.append("path")
                         .style("stroke", "yellow")
                         .attr("d", value_line(data));
@@ -131,7 +130,7 @@
                 
     </script>
         <p>
-                Changes were made again!
+                Changes were made yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
