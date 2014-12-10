@@ -26,7 +26,16 @@
                 
         var color = d3.scale.category10();
          
-
+        //Axis for the graph
+        var x_axis = d3.svg.axis()
+                .scale(x_scale)
+                .orient("bottom")
+                .ticks(5);
+                        
+        var y_axis = d3.svg.axis()
+                .scale(y_axis)
+                .orient("left")
+                .ticks(5); 
         
         //Parse date
         var parse_date = d3.time.format("%Y-%m-%d").parse;
@@ -72,24 +81,13 @@
                 
                 svg.append("path")
                         .attr("d", value_line(data));
-
-                //Axis for the graph
-                var x_axis = d3.svg.axis()
-                        .scale(x_scale)
-                        .orient("bottom")
-                        .ticks(5);
-                        
-                var y_axis = d3.svg.axis()
-                        .scale(y_axis)
-                        .orient("left")
-                        .ticks(5);                
                 
                 svg.append("g")
                         .attr("transform", "translate(0," + height + ")")
-                        .call(xAxis);
+                        .call(x_axis);
                         
                 svg.append("g")
-                        .call(yAxis);
+                        .call(y_axis);
                 
                 
         });
@@ -97,7 +95,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet yet again!
+                Changes were made again!
         </p>
 </body>
 </html>
