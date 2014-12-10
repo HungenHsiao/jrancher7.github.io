@@ -120,9 +120,7 @@
                         });  
                 
                 svg.append("path")
-                        .style("stroke", function(cities) {for(i = 0; i < cities.length; i++) {
-                          string(i);      
-                        }})
+                        .style("stroke", "yellow")
                         .attr("d", value_line(data));
                 
                 svg.append("path")
