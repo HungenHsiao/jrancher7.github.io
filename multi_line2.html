@@ -67,8 +67,12 @@
                 var cities = d3.keys(data[0]).filter(function(key) {return key !== "date";});
                 data.forEach(function(d){
                         d.date = parse_date(d.date);
-
+                        for (i = 0; i < cities.length; i++) {
+                                var city = dataset[i];
+                                d.dataset[i] = +d.dataset[i];
+                        }
                 });
+                console.log(dataset[i])
                 
                 x_scale.domain(d3.extent(data, function(d) {
                         return d.date;
@@ -141,7 +145,7 @@
                 
     </script>
         <p>
-                Changes were made yet again!
+                Changes were made again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
