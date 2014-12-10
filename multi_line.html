@@ -40,6 +40,7 @@
         console.log(parse_date('2011-03-05'));  //test to see how this function works (I can be removed)
         
         var value_line = d3.svg.line()
+                .interpolate("basis")
                 .x(function(d) {
                         return x_scale(d.date);
                 })
@@ -57,16 +58,9 @@
         d3.tsv("multi_line.tsv", function(error, data) {
                 data.forEach(function(d){
                         d.date = parse_date(d.date);
-                        d["San Francisco"] = +d["San Francisco"]
+                        d["San Francisco"] = +d["San Francisco"];
                 });
                 
-/*                var cities = x_scale.domain().map(function(name){
-                        name: name;
-                        values: data.map(function(d){
-                                return {date: d.date, temperature: +d[name]}
-                        })
-                })
-*/
                 x_scale.domain(d3.extent(data, function(d) {
                 return d.date;
                 }));
