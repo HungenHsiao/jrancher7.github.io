@@ -60,6 +60,24 @@
                 .y(function(d) {
                         return y_scale(d.newyork);
                 });
+                
+        var value_line2 = d3.svg.line()
+                .interpolate("basis")
+                .x(function(d) {
+                        return x_scale(d.date);
+                })
+                .y(function(d) {
+                        return y_scale(d.sanfran);
+                });       
+                
+        var value_line3 = d3.svg.line()
+                .interpolate("basis")
+                .x(function(d) {
+                        return x_scale(d.date);
+                })
+                .y(function(d) {
+                        return y_scale(d.austin);
+                });        
         
         //Parse date
         var parse_date = d3.time.format("%Y%m%d").parse;
@@ -77,6 +95,8 @@
                 data.forEach(function(d){
                         d.date = parse_date(d.date);
                         d.newyork = +d.newyork;
+                        d.sanfran = +d.sanfran;
+                        d.austin = +d.austin;
                 });
                 
                 x_scale.domain(d3.extent(data, function(d) {
@@ -88,6 +108,12 @@
                 
                 svg.append("path")
                         .attr("d", value_line(data));
+                
+                svg.append("path")
+                        .attr("d", value_line2(data));
+                        
+                svg.append("path")
+                        .attr("d", value_line3(data));
                 
                 svg.append("g")
                         .attr("transform", "translate(0," + height + ")")
