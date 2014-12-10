@@ -62,10 +62,8 @@
                 });
         
         //Parse date
-        var parse_date = d3.time.format("%Y-%m-%d").parse;
-        console.log(parse_date('2011-03-05'));  //test to see how this function works (I can be removed)
+        var parse_date = d3.time.format("%Y%m%d").parse;
 
-        
         //SVG canvas        
         var svg = d3.select("body")
                 .append("svg")
