@@ -24,8 +24,6 @@
         var y_scale = d3.scale.linear()
                 .range([height, 0]);
                 
-        var color = d3.scale.category10();
-         
         //Axis for the graph
         var x_axis = d3.svg.axis()
                 .scale(x_scale)
@@ -42,7 +40,6 @@
         console.log(parse_date('2011-03-05'));  //test to see how this function works (I can be removed)
         
         var value_line = d3.svg.line()
-                .interpolate("basis")
                 .x(function(d) {
                         return x_scale(d.date);
                 })
