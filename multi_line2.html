@@ -69,7 +69,7 @@
                         d.date = parse_date(d.date);
                         for (i = 0; i < cities.length; i++) {
                                 var city = cities[i];
-                                d.city = +d.city;
+                                d.[city] = +d.[city];
                                 console.log(city);                                
                         }
 
