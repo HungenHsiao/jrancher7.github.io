@@ -38,8 +38,9 @@
                 .ticks(5);
         
         var value_line = d3.svg.line()
-                .x_scale(function(d) {return x_scale(d.date);})
-                .y_scale(function(d) {return y_scale(d["San_Francisco"]);})
+                .interpolate("basis")
+                .x_scale(function(d) {return x_scale(d["date"]);})
+                .y_scale(function(d) {return y_scale(d["San_Francisco"]);});
         
         //Parse date
         var parse_date = d3.time.format("%Y-%m-%d").parse;
