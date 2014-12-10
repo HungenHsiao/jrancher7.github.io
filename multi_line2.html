@@ -64,12 +64,12 @@
                 
         //Get data
         d3.tsv("multi_line.tsv", function(error, data) {
-                var cities = d3.keys(data[0]).filter(function(key) {return key !== "date";});
-                data.forEach(function(d){
-                        d.date = parse_date(d.date);
-                        for (i = 0; i < cities.length; i++) {
-                                var city = cities[i];
-                                d.[city] = +d.[city];
+                var cities = d3.keys(data[0]).filter(function(key) {return key !== "date";}); //creates an array of all the cities minus the date
+                data.forEach(function(d){   //runs the data from multi_line.tsv and for each line of element d (which is every row)
+                        d.date = parse_date(d.date);   //it takes date of every d element and parse it to the right date format
+                        for (i = 0; i < cities.length; i++) {  //we look through the row and there is 3 numbers (doesn't count date)
+                                var city = cities[i];   //we are storing each city's name in the variable city
+                                d.[city] = +d.[city];  //it calls the variable city .. of each element d (aka every row) and makes sure that value is a number
                                 console.log(city);                                
                         }
 
