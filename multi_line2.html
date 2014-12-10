@@ -68,44 +68,29 @@
                 data.forEach(function(d){
                         d.date = parse_date(d.date);
                 var dataset = function(cities) {
-                for (i = 0; i < cities.length; i++) {
-                        var city = dataset[i]
-                        d.dataset[i] = +d.dataset[i];
+                        for (i = 0; i < cities.length; i++) {
+                                var city = dataset[i]
+                                d.dataset[i] = +d.dataset[i];
                 }}});
                 
                 x_scale.domain(d3.extent(data, function(d) {
                         return d.date;
                 }));
                 y_scale.domain([0, d3.max(data, function(d) {
-                                return d.newyork;
+                        return d.newyork;
                 })]);
-                
-                var value_line = d3.svg.line()
-                        .interpolate("basis")
-                        .x(function(d) {
-                                return x_scale(d.date);
-                        })
-                        .y(function(d) {
-                                return y_scale(d.newyork);
-                        });
-                        
-                var value_line2 = d3.svg.line()
-                        .interpolate("basis")
-                        .x(function(d) {
-                                return x_scale(d.date);
-                        })
-                        .y(function(d) {
-                                return y_scale(d.sanfran);
-                        });       
-                        
-                var value_line3 = d3.svg.line()
-                        .interpolate("basis")
-                        .x(function(d) {
-                                return x_scale(d.date);
-                        })
-                        .y(function(d) {
-                                return y_scale(d.austin);
-                        });  
+
+                var value_line_number = function(cities) {
+                        for (i = 0; i < cities.length; i++) {               
+                        var value_line[i] = d3.svg.line()
+                                .interpolate("basis")
+                                .x(function(d) {
+                                        return x_scale(d.date);
+                                })
+                                .y(function(d) {
+                                        return y_scale(dataset[i]);
+                                });
+                };        
                 
                 svg.append("path")
                         .style("stroke", "yellow")
@@ -132,7 +117,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet again!
+                Changes were made yet yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
