@@ -74,10 +74,10 @@
                 
                 var value_line = d3.svg.line()
                         .interpolate("basis")
-                        .x_scale(function(d) {
+                        .x(function(d) {
                                 return x_scale(d.date);
                         })
-                        .y_scale(function(d) {return y_scale(d["San_Francisco"]);});
+                        .y(function(d) {return y_scale(d["San_Francisco"]);});
                         
                 svg.append("path")
                         .attr("d", value_line(data));
