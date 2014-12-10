@@ -99,15 +99,7 @@
                 svg.append("path")
                         .style("stroke", "yellow")
                         .attr("d", value_line(data));
-                
-                svg.append("path")
-                        .style("stroke", "blue")
-                        .attr("d", value_line2(data));
-                        
-                svg.append("path")
-                        .style("stroke", "green")                
-                        .attr("d", value_line3(data));
-                
+
                 svg.append("g")
                         .attr("transform", "translate(0," + height + ")")
                         .call(x_axis);
