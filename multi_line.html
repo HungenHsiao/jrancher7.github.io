@@ -37,6 +37,10 @@
                 .orient("left")
                 .ticks(5);
         
+        var value_line = d3.svg.line()
+                .x_scale(function(d) {return x_scale(d["date"]);})
+                .y_scale(function(d) {return y_scale(d["San_Francisco"]);})
+        
         //Parse date
         var parse_date = d3.time.format("%Y-%m-%d").parse;
         console.log(parse_date('2011-03-05'));  //test to see how this function works (I can be removed)
@@ -51,34 +55,39 @@
                 
         //Get data
         d3.tsv("multi_line.tsv", function(error, data) {
-                x_scale.domain(d3.keys(data[0]).filter(function(key){return key !== "date";}));
                 data.forEach(function(d){
                         d.date = parse_date(d.date);
+                        d["San Francisco"] = +d["San Francisco"]
                 });
                 
-                var cities = x_scale.domain().map(function(name){
+/*                var cities = x_scale.domain().map(function(name){
                         name: name;
                         values: data.map(function(d){
                                 return {date: d.date, temperature: +d[name]}
                         })
                 })
-
+*/
                 x_scale.domain(d3.extent(data, function(d) {
                 return d.date;
                 }));
-                y_scale.domain([
-                        d3.min(cities, function(c) {
-                                return d3.min(c.values, function(v) {
-                                        return v.temperature;
-                                });
-                        }),
-                        d3.max(cities, function(c) {
-                                return d3.max(c.values, function(v) {
-                                        return v.temperature;
-                                });
+                y_scale.domain([0,
+                        d3.max(data, function(d) {
+                                return d["San Francisco"];
                         }),
                 ]);
                 console.log("Austin".values[1]);
+                
+                svg.append("path")
+                        .attr("d", value_line(data));
+                
+                svg.append("g")
+                        .attr("transform", "translate(0," + height + ")")
+                        .call(xAxis);
+                        
+                svg.append("g")
+                        .call(yAxis);
+                
+                
         });
         
 
@@ -92,7 +101,7 @@
                 
     </script>
         <p>
-                Changes were made again!
+                Changes were made yet again!
         </p>
 </body>
 </html>
