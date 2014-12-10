@@ -65,6 +65,7 @@
         //Get data
         d3.tsv("multi_line.tsv", function(error, data) {
                 var cities = d3.keys(data[0]).filter(function(key) {return key !== "date";}); //creates an array of all the cities minus the date
+                
                 data.forEach(function(d){   //runs the data from multi_line.tsv and for each line of element d (which is every row)
                         d.date = parse_date(d.date);   //it takes date of every d element and parse it to the right date format
                         for (i = 0; i < cities.length; i++) {  //we look through the row and there is 3 numbers (doesn't count date)
@@ -72,7 +73,6 @@
                                 d[city] = +d[city];  //it calls the variable city .. of each element d (aka every row) and makes sure that value is a number
                                 console.log(d[city]);                                
                         }
-
                 });
                 
                 x_scale.domain(d3.extent(data, function(d) {
@@ -83,24 +83,20 @@
                 })]);
 
                 for (i = 0; i < cities.length; i++) {
-                        var value_line = cities[i];
-                        d3.svg.line()
+                        var city = cities[i];
+                        var value_line = d3.svg.line()
                                 .interpolate("basis")
                                 .x(function(d) {
                                         return x_scale(d.date);
                                 })
                                 .y(function(d) {
-                                        return y_scale(value_line);
+                                        return y_scale(d[city]);
                                 });
                         svg.append("path")
                                 .style("stroke", "yellow")
                                 .attr("d", value_line(data));
-
                 };
                 
-  
-                
-
                 svg.append("g")
                         .attr("transform", "translate(0," + height + ")")
                         .call(x_axis);
@@ -114,7 +110,7 @@
                 
     </script>
         <p>
-                Changes were made yet again!
+                Changes were made again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
