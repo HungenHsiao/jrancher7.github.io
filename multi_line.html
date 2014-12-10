@@ -58,7 +58,7 @@
                         return x_scale(d.date);
                 })
                 .y(function(d) {
-                        return y_scale(d.sanfran);
+                        return y_scale(d.newyork);
                 });
         
         //Parse date
@@ -78,14 +78,14 @@
         d3.tsv("multi_line.tsv", function(error, data) {
                 data.forEach(function(d){
                         d.date = parse_date(d.date);
-                        d.sanfran = +d.sanfran;
+                        d.newyork = +d.newyork;
                 });
                 
                 x_scale.domain(d3.extent(data, function(d) {
                         return d.date;
                 }));
                 y_scale.domain([0, d3.max(data, function(d) {
-                                return d.sanfran;
+                                return d.newyork;
                 })]);
                 
                 svg.append("path")
