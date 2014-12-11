@@ -66,7 +66,7 @@
                 
         //Get data
         d3.tsv("multi_line.tsv", function(error, data) {
-                var cities = d3.keys(data[0]).filter(function(key) {return key !== "date";}); //creates an array of all the cities minus the date
+                var cities = color.domain(d3.keys(data[0]).filter(function(key) {return key !== "date";})); //creates an array of all the cities minus the date
                 
                 data.forEach(function(d){   //runs the data from multi_line.tsv and for each line of element d (which is every row)
                         d.date = parse_date(d.date);   //it takes date of every d element and parse it to the right date format
