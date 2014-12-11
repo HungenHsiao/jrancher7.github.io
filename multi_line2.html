@@ -95,7 +95,7 @@
                                         return y_scale(d[city]); //looks at the temperature value of that city for that d element row and apply y_scale on the value
                                 });
                         svg.append("path")     //makes the line on the graph
-                                .style("stroke", function(d) {color(d[city]);})
+                                .style("stroke", function(d) {color(data]);})
                                 .attr("d", value_line(data));   //calls the function to make the line
                 };
                 
