@@ -40,6 +40,8 @@
         var y_scale = d3.scale.linear()
                 .range([height, 0]);
                 
+        var color = d3.scale.category10();
+                
         //Axis for the graph
         var x_axis = d3.svg.axis()
                 .scale(x_scale)
@@ -64,7 +66,7 @@
                 
         //Get data
         d3.tsv("multi_line.tsv", function(error, data) {
-                var cities = d3.keys(data[0]).filter(function(key) {return key !== "date";}); //creates an array of all the cities minus the date
+                var cities = color.domain(d3.keys(data[0]).filter(function(key) {return key !== "date";})); //creates an array of all the cities minus the date
                 
                 data.forEach(function(d){   //runs the data from multi_line.tsv and for each line of element d (which is every row)
                         d.date = parse_date(d.date);   //it takes date of every d element and parse it to the right date format
@@ -94,7 +96,8 @@
                                 });
                         svg.append("path")     //makes the line on the graph
                                 .style("stroke", "grey")
-                                .attr("d", value_line(data));   //calls the function to make the line
+                                .attr("d", value_line(data))   //calls the function to make the line
+                                .style("stroke", color(d[city]));
                 };
                 
                 svg.append("g")
@@ -110,7 +113,7 @@
                 
     </script>
         <p>
-                Changes were made again!
+                Changes were made yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
