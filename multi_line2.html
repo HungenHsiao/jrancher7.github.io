@@ -96,7 +96,7 @@
                                 });
                         svg.append("path")     //makes the line on the graph
                                 .attr("d", value_line(data))   //calls the function to make the line
-                                .style("stroke", function(d) {color(city);});
+                                .style("stroke", function(d) { return color(city);});
                         console.log(color(city));        
                 };
                 
