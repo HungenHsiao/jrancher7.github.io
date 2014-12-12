@@ -57,16 +57,13 @@
         //Parse date
         var parse_date = d3.time.format("%Y%m%d").parse;
         
-        var print_price = function (player) {
+        var create_player_array = function (player) {
                 return player["name"];
-                return function () {
-                	return player["price_list"]["price"];
-                	return player["price_list"]["date"];
-                }
+                return player["price_list"];
         };
 
         var dataset = $.getJSON( "http://johnnyhsiao.com/player_list_small.json", function( player_array ) {
-	            player_array.forEach(print_price);
+	            player_array.forEach(create_player_array);
 	            console.log(dataset);
         });
 
