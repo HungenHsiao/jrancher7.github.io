@@ -84,7 +84,7 @@
 /*
         dataset.forEach(function(d){  }
                 return {
-                	d["name"] = d["name"];   
+                	d.player_name = d.player_name;   
                 	for (i = 0; i < player_obj.length; i++) {  
                         var player = player_obj[i]; 
                         	price_list: data.map(function(d) {
@@ -92,7 +92,7 @@
                         }
                 }
 
-        });
+        });*/
                 
         x_scale.domain(d3.extent(data, function(d) {
                 return d.date;
@@ -121,7 +121,7 @@
                         
         svg.append("g")
                 .call(y_axis);
-        }*/
+        }
                 
 
         var failed_to_load = function () {
@@ -133,7 +133,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet yet yet again!
+                Changes were made again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
