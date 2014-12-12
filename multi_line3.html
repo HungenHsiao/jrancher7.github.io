@@ -79,12 +79,15 @@
         
 
         dataset.forEach(function(d){  
-                d.name = d.name;   
-                for (i = 0; i < player_obj.length; i++) {  
+                return {
+                	d.name = d.name;   
+                	for (i = 0; i < player_obj.length; i++) {  
                         var player = player_obj[i]; 
-                        d[player] = +d[player];  
+                        	price_list: data.map(function(d) {
+        			return {date: d.date, price: +d[price]};
+                        }
                 }
-                console.log()
+                console.log(dataset)
         });
                 
         x_scale.domain(d3.extent(data, function(d) {
@@ -120,7 +123,7 @@
                 
     </script>
         <p>
-                Changes were made again!
+                Changes were made yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
