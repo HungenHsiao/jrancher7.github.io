@@ -74,7 +74,10 @@
         var data_loaded = function(data) {
             var dataset = [];
             $.each(data, function(position, player) {     // position = index (interger meaning the position of the object in the array); player = object of the array
-                dataset.push([player["date"],player["price"]);
+                var player_name = player["name"];
+                var price_date = player["price_list"]["date"];
+                var price = player["price_list"]["price"]
+                dataset.push([price_date, price, player_name);
                 console.log(dataset)
             });
         
@@ -124,13 +127,13 @@
         var failed_to_load = function () {
             console.log("players file failed to load!");
         }
-        $.getJSON("/player_data.json", data_loaded)
+        $.getJSON("/player_list_small.json", data_loaded)
             .fail(failed_to_load);        
         
                 
     </script>
         <p>
-                Changes were made yet again!
+                Changes were made yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
