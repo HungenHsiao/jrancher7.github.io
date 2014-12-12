@@ -36,7 +36,7 @@
 	            return player['rating'];
               };
 
-        var dataset = $.getJSON( "http://johnnyhsiao.com/players.json", function( player_array ) {
+        var dataset = $.getJSON( "/players.json", function( player_array ) {
 	            player_array.forEach(print_rating);
         });
         var svg = d3.select("body")
