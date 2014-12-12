@@ -75,10 +75,11 @@
             var dataset = [];
             $.each(data, function(position, player) {     // position = index (interger meaning the position of the object in the array); player = object of the array
                 var player_name = player["name"];
-                var price_list = player["price_list"][position];
+                var price_list = player[1]["date"];
+                var price = player[1]["price"];
                 dataset.push([price_list, player_name]);
             });
-                console.log(dataset)
+                console.log(dataset);
         
 /*
         dataset.forEach(function(d){  }
