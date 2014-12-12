@@ -59,7 +59,10 @@
         
         var print_price = function (player) {
                 return player["name"];
-                return player["price_list"];
+                return function () {
+                	return player["price_list"]["price"];
+                	return player["price_list"]["date"];
+                }
         };
 
         var dataset = $.getJSON( "http://johnnyhsiao.com/player_list_small.json", function( player_array ) {
@@ -126,7 +129,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet again!
+                Changes were made yet yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
