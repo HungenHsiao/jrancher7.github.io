@@ -71,13 +71,15 @@
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
                 
         //Get data
-        var dataset = $.getJSON( "/player_list_small.json", function(error, json) {
-	            if (error) return console.warn(error);
-	            return json;
-        });
+        var data_loaded = function(data) {
+            var dataset = [];
+            $.each(data, function(position, player) {     // position = index (interger meaning the position of the object in the array); player = object of the array
+                dataset.push([player["date"],player["price"]);
+                console.log(dataset)
+            });
         
 
-        dataset.forEach(function(d){  
+        dataset.forEach(function(d){  }
                 return {
                 	d["name"] = d["name"];   
                 	for (i = 0; i < player_obj.length; i++) {  
@@ -86,7 +88,7 @@
         			return {date: d.date, price: +d[price]};
                         }
                 }
-                console.log(dataset)
+
         });
                 
         x_scale.domain(d3.extent(data, function(d) {
@@ -116,13 +118,19 @@
                         
         svg.append("g")
                 .call(y_axis);
+        }
                 
-        
+
+        var failed_to_load = function () {
+            console.log("players file failed to load!");
+        }
+        $.getJSON("/player_data.json", data_loaded)
+            .fail(failed_to_load);        
         
                 
     </script>
         <p>
-                Changes were made again!
+                Changes were made yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
