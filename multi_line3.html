@@ -62,8 +62,9 @@
                 return player["price_list"];
         };
 
-        var dataset = $.getJSON( "http://johnnyhsiao.com/player_list_small.json", function( player_array ) {
-	            player_array.forEach(create_player_array);
+        var dataset = $.getJSON( "/player_list_small.json", function(error, json) {
+	            if (error) return console.warn(error);
+	            return json;
 	            console.log(dataset);
         });
 
@@ -109,8 +110,6 @@
                                 });
                         svg.append("path")     //makes the line on the graph
                                 .attr("d", value_line(data))   //calls the function to make the line
-                                .style("stroke", function(d) { return color(city);});
-                        console.log(color(city));        
                 };
                 
                 svg.append("g")
@@ -126,7 +125,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet yet yet again!
+                Changes were made again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
