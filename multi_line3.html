@@ -77,12 +77,13 @@
                 var player_name = player["name"];
                 var price_date = player["price_list"];
                 dataset.push([price_date,  player_name]);
+                        console.log(dataset[1][price_date]);
             });
                 console.log(dataset);
                 console.log(dataset[0][0][0]["date"]);
                 console.log(dataset[0][0][0]["price"]);
                 console.log(dataset[0][player_name]);
-                console.log(dataset[1][price_date]);
+        
 /*
         dataset.forEach(function(d){  }
                 return {
@@ -135,7 +136,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet again!
+                Changes were made yet yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
