@@ -55,18 +55,9 @@
                 .ticks(5); 
         
         //Parse date
-        var parse_date = d3.time.format("%Y%m%d").parse;
+        var parse_date = d3.time.format("%Y-%m-%d").parse;
         
-        var create_player_array = function (player) {
-                return player["name"];
-                return player["price_list"];
-        };
 
-        var dataset = $.getJSON( "/player_list_small.json", function(error, json) {
-	            if (error) return console.warn(error);
-	            return json;
-	            console.log(dataset);
-        });
 
 
         //SVG canvas        
@@ -78,49 +69,51 @@
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
                 
         //Get data
-
-        
-        d3.tsv("multi_line.tsv", function(error, data) {
-                var cities = d3.keys(data[0]).filter(function(key) {return key !== "date";}); //creates an array of all the cities minus the date
-                
-                data.forEach(function(d){   //runs the data from multi_line.tsv and for each line of element d (which is every row)
-                        d.date = parse_date(d.date);   //it takes date of every d element and parse it to the right date format
-                        for (i = 0; i < cities.length; i++) {  //we look through the row and there is 3 numbers (doesn't count date)
-                                var city = cities[i];   //we are storing each city's name in the variable city
-                                d[city] = +d[city];  //it calls the variable city .. of each element d (aka every row) and makes sure that value is a number
-                        }
-                });
-                
-                x_scale.domain(d3.extent(data, function(d) {
-                        return d.date;
-                }));
-                y_scale.domain([0, d3.max(data, function(d) {
-                        return d.newyork;
-                })]);
-
-                for (i = 0; i < cities.length; i++) {
-                        var city = cities[i];   //creates a variable to hold the city in question (gets the i-th city)
-                        var value_line = d3.svg.line()    //creates a function that makes a line
-                                .interpolate("basis")    //smoothes the line
-                                .x(function(d) {        //gets the x-variable for the line -- which is the date in this case
-                                        return x_scale(d.date);
-                                })
-                                .y(function(d) {    //gets the y-variable; from each d element (aka each row of the data)
-                                        return y_scale(d[city]); //looks at the temperature value of that city for that d element row and apply y_scale on the value
-                                });
-                        svg.append("path")     //makes the line on the graph
-                                .attr("d", value_line(data))   //calls the function to make the line
-                };
-                
-                svg.append("g")
-                        .attr("transform", "translate(0," + height + ")")
-                        .call(x_axis);
-                        
-                svg.append("g")
-                        .call(y_axis);
-                
-                
+        var dataset = $.getJSON( "/player_list_small.json", function(error, json) {
+	            if (error) return console.warn(error);
+	            return json;
+	            console.log(dataset);
         });
+        
+
+        dataset.forEach(function(d){  
+                d.name = d.name;   
+                for (i = 0; i < player_obj.length; i++) {  
+                        var player = player_obj[i]; 
+                        d[player] = +d[player];  
+                }
+                console.log()
+        });
+                
+        x_scale.domain(d3.extent(data, function(d) {
+                return d.date;
+        }));
+        y_scale.domain([0, d3.max(data, function(d) {
+                return d.newyork;
+        })]);
+
+        for (i = 0; i < cities.length; i++) {
+                var city = cities[i]; 
+                var value_line = d3.svg.line() 
+                        .interpolate("basis")  
+                        .x(function(d) {   
+                                return x_scale(d.date);
+                        })
+                        .y(function(d) {   
+                                return y_scale(d[city]);
+                        });
+                svg.append("path")    
+                        .attr("d", value_line(data))   
+        };
+                
+        svg.append("g")
+                .attr("transform", "translate(0," + height + ")")
+                .call(x_axis);
+                        
+        svg.append("g")
+                .call(y_axis);
+                
+        
         
                 
     </script>
