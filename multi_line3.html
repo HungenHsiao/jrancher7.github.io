@@ -64,8 +64,9 @@
 
         var dataset = $.getJSON( "http://johnnyhsiao.com/player_list_small.json", function( player_array ) {
 	            player_array.forEach(print_price);
+	            console.log(dataset);
         });
-        console.log(dataset)
+
 
         //SVG canvas        
         var svg = d3.select("body")
@@ -126,7 +127,7 @@
                 
     </script>
         <p>
-                Changes were made again!
+                Changes were made yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
