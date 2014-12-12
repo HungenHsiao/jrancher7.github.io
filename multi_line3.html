@@ -6,6 +6,7 @@
         </title>
         
         <script src="http://d3js.org/d3.v3.js"></script>
+        <script src="https://code.jquery.com/jquery-2.1.1.js"></script>            
         <script type="text/javascript"></script>
         <style type = "text/css">
                 body { font: 12px Arial;}
@@ -55,6 +56,16 @@
         
         //Parse date
         var parse_date = d3.time.format("%Y%m%d").parse;
+        
+        var print_price = function (player) {
+                return player["price"];
+                return player["date"];
+        };
+
+        var dataset = $.getJSON( "http://johnnyhsiao.com/player_list_small.json", function( player_array ) {
+	            player_array.forEach(print_price);
+        });
+        console.log(dataset)
 
         //SVG canvas        
         var svg = d3.select("body")
@@ -65,6 +76,8 @@
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
                 
         //Get data
+
+        
         d3.tsv("multi_line.tsv", function(error, data) {
                 var cities = d3.keys(data[0]).filter(function(key) {return key !== "date";}); //creates an array of all the cities minus the date
                 
@@ -113,7 +126,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet yet again!
+                Changes were made again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
