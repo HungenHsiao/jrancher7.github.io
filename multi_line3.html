@@ -55,7 +55,7 @@
                 .ticks(5); 
         
         //Parse date
-        var parse_date = d3.time.format("%Y-%m-%dT%H:%M:%S.%LZ").parse;
+        var parse_date = d3.time.format("%Y-%m-%dT%H:%M:%S").parse;
         var date = "2014-12-01T08:10:54.067204+00:00";
         console.log(parse_date(date));
         
