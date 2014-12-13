@@ -101,8 +101,8 @@
 
         });*/
                 
-        x_scale.domain(d3.extent(player.price_list, function(d) {
-                return d.date;
+        x_scale.domain(d3.extent(player.price_list, function(i) {
+                return i;
         }));
         y_scale.domain([0, d3.max(player.price_list, function(d) {
                 return d.price;
@@ -111,8 +111,8 @@
 
                 var value_line = d3.svg.line() 
                         .interpolate("basis")  
-                        .x(function(d) {   
-                                return x_scale(d.date);
+                        .x(function(i) {   
+                                return x_scale(i);
                         })
                         .y(function(d) {   
                                 return y_scale(d.price);
@@ -139,7 +139,7 @@
                 
     </script>
         <p>
-                Changes were made yet again!
+                Changes were made yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
