@@ -82,13 +82,11 @@
                 console.log(dataset[0]["price_list"]);
                 console.log(dataset[0].price_list[1]);                
         
-        var price_date = function() {
+        for (i = 0; i < dataset.length; i++) {
                 var player = dataset[i];
-                for (i = 0; i < dataset.length; i++) {
-                        return player.pricelist;
-                }
+                return player.price_list;
+                console.log(player.price_list);
         }
-        console.log(price_date(dataset));
 /*
         dataset.forEach(function(d){  }
                 return {
@@ -141,7 +139,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet yet again!
+                Changes were made yet yet yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
