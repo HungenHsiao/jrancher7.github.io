@@ -109,8 +109,7 @@
                                 return y_scale(d.price);
                         });
                 svg.append("path")    
-                        .datum(dataset[0])
-                        .attr("d", value_line(dataset[0]));
+                        .attr("d", value_line(dataset[0].price_list));
 
                 
         svg.append("g")
@@ -131,7 +130,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet yet again!
+                Changes were made yet yet yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
