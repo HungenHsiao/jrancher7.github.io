@@ -82,10 +82,13 @@
                 console.log(dataset[0]["price_list"]);
                 console.log(dataset[0].price_list[1]);                
         
-        var price_date = function(position, i) {
-                return dataset[position].pricelist[i];
+        var price_date = function() {
+                var player = dataset[i];
+                for (i = 0; i < dataset.length; i++) {
+                        return player.pricelist;
+                }
         }
-        console.log(price_date(0, 2))
+        console.log(price_date);
 /*
         dataset.forEach(function(d){  }
                 return {
