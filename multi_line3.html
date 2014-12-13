@@ -82,12 +82,6 @@
                 console.log(dataset[0]["price_list"]);
                 console.log(dataset[0].price_list[1].date);                
    */     
-        for (i = 0; i < dataset.length; i++) {
-                var player = dataset[i];
-                player.price_list;
-
-        }
-                console.log(player.price_list);
 /*
         dataset.forEach(function(d){  }
                 return {
@@ -101,21 +95,22 @@
 
         });*/
                 
-        x_scale.domain([0, 50]);
-        y_scale.domain([0, d3.max(player.price_list, function(d) {
+        x_scale.domain([0, dataset[0].price_list.length]);
+        y_scale.domain([0, d3.max(dataset[0], function(d) {
                 return d.price;
         })]);
         
                 var value_line = d3.svg.line() 
                         .interpolate("basis")  
-                        .x(function(d) {   
-                                return x_scale();
+                        .x(function(d, i) {   
+                                return x_scale(i);
                         })
                         .y(function(d) {   
                                 return y_scale(d.price);
                         });
                 svg.append("path")    
-                        .attr("d", value_line(player.price_list));
+                        .datum(dataset[0])
+                        .attr("d", value_line(dataset[0]));
 
                 
         svg.append("g")
@@ -136,7 +131,7 @@
                 
     </script>
         <p>
-                Changes were made yet again!
+                Changes were made yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
