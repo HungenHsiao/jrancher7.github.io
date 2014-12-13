@@ -96,7 +96,7 @@
         });*/
                 
         x_scale.domain([0, dataset[0].price_list.length]);
-        y_scale.domain([0, d3.max(dataset[0], function(d) {
+        y_scale.domain([0, d3.max(dataset[0].price_list, function(d) {
                 return d.price;
         })]);
         
@@ -131,7 +131,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet again!
+                Changes were made yet yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
