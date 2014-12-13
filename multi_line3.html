@@ -74,10 +74,7 @@
         var data_loaded = function(data) {
             var dataset = [];
             $.each(data, function(position, player) {     // position = index (interger meaning the position of the object in the array); player = object of the array
-                var player_name = player["name"];
-                var price_date = player["price_list"];
-                dataset.push([price_date,  player_name]);
-                        console.log(dataset[1]);
+                dataset.push(player);
             });
                 console.log(dataset);
                 console.log(dataset[0][0][0]["date"]);
@@ -136,7 +133,7 @@
                 
     </script>
         <p>
-                Changes were made again!
+                Changes were made yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
