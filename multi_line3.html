@@ -101,22 +101,21 @@
 
         });*/
                 
-        x_scale.domain(d3.extent(dataset, function(d) {
+        x_scale.domain(d3.extent(player.price_list, function(d) {
                 return d.date;
         }));
-        y_scale.domain([0, d3.max(dataset, function(d) {
+        y_scale.domain([0, d3.max(player.price_list, function(d) {
                 return d.price;
         })]);
 
         for (i = 0; i < dataset.length; i++) {
-                var player = player.price_list[i]; 
                 var value_line = d3.svg.line() 
                         .interpolate("basis")  
                         .x(function(d) {   
                                 return x_scale(d.date);
                         })
                         .y(function(d) {   
-                                return y_scale(d[player]);
+                                return y_scale(d.price);
                         });
                 svg.append("path")    
                         .attr("d", value_line(player.price_list))   
@@ -140,7 +139,7 @@
                 
     </script>
         <p>
-                Changes were made again!
+                Changes were made yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
