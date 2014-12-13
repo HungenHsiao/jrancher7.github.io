@@ -74,6 +74,7 @@
             var dataset = [];
             $.each(data, function(position, player) {     // position = index (interger meaning the position of the object in the array); player = object of the array
                 dataset.push(player);
+                console.log(dataset);
             });
 
             var barWidth = (w-margin.left-margin.right)/dataset.length;
