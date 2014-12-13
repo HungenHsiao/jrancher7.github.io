@@ -109,8 +109,8 @@
 
                 var value_line = d3.svg.line() 
                         .interpolate("basis")  
-                        .x(function(i) {   
-                                return x_scale(i);
+                        .x(function(d) {   
+                                return x_scale(d.i);
                         })
                         .y(function(d) {   
                                 return y_scale(d.price);
@@ -137,7 +137,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet urutyu eegteg again!
+                Changes were made  again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
