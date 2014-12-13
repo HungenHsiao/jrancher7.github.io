@@ -96,15 +96,17 @@
 
         });*/
                 
-        x_scale.domain([0, dataset[0].price_list.length]);
+        x_scale.domain(d3.extent(dataset[0].price_list, function(d) {
+                return d.date;
+        }));
         y_scale.domain([0, d3.max(dataset[0].price_list, function(d) {
                 return d.price;
         })]);
         
                 var value_line = d3.svg.line() 
                         .interpolate("basis")  
-                        .x(function(d, i) {   
-                                return x_scale(i);
+                        .x(function(d) {   
+                                return x_scale(d.date);
                         })
                         .y(function(d) {   
                                 return y_scale(d.price);
@@ -131,7 +133,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet yet yet yet yet yet again!
+                Changes were made again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
