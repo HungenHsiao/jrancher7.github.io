@@ -54,15 +54,6 @@
                 .orient("left")
                 .ticks(5); 
         
-        //Parse date
-
-        for (var i = 0; i < dataset[0].price_list.length; i++) {
-                var price_entry = dataset[0].price_list[i];
-                price_entry["date"] = new Date(price_entry["date"]);
-                console.log(price_entry["date"]);
-        }
-
-
         //SVG canvas        
         var svg = d3.select("body")
                 .append("svg")
@@ -77,6 +68,15 @@
             $.each(data, function(position, player) {     // position = index (interger meaning the position of the object in the array); player = object of the array
                 dataset.push(player);
             });
+            
+            
+                //Parse date
+
+                for (var i = 0; i < dataset[0].price_list.length; i++) {
+                        var price_entry = dataset[0].price_list[i];
+                        price_entry["date"] = new Date(price_entry["date"]);
+                        console.log(price_entry["date"]);
+                }
  /*               console.log(dataset);
                 console.log(dataset[0]);
                 console.log(dataset[0]["name"]);
@@ -131,7 +131,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet yet yet yet yet again!
+                Changes were made yet yet yet yet yet yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
