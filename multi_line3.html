@@ -55,11 +55,12 @@
                 .ticks(5); 
         
         //Parse date
-        var parse_date = d3.time.format("%Y-%m-%dT%H:%M:%SZ").parse;
-        var date = "2014-12-01T08:10:54.330756+00:00";
-        console.log(parse_date(date));
-        
 
+        for (var i = 0; i < dataset[0].price_list.length; i++) {
+                var price_entry = dataset[0].price_list[i];
+                price_entry["date"] = new Date(price_entry["date"]);
+                console.log(price_entry["date"]);
+        }
 
 
         //SVG canvas        
@@ -130,7 +131,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet yet yet again!
+                Changes were made yet yet yet yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
