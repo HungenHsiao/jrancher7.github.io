@@ -85,9 +85,9 @@
         for (i = 0; i < dataset.length; i++) {
                 var player = dataset[i];
                 player.price_list;
-                console.log(player.price_list);
-        }
 
+        }
+                console.log(player.price_list);
 /*
         dataset.forEach(function(d){  }
                 return {
@@ -105,12 +105,11 @@
         y_scale.domain([0, d3.max(player.price_list, function(d) {
                 return d.price;
         })]);
-var hi = 1;
         
                 var value_line = d3.svg.line() 
                         .interpolate("basis")  
-                        .x(function(hi) {   
-                                return x_scale(hi+1);
+                        .x(function(d) {   
+                                return x_scale();
                         })
                         .y(function(d) {   
                                 return y_scale(d.price);
@@ -137,7 +136,7 @@ var hi = 1;
                 
     </script>
         <p>
-                Changes were made hi aggg egerge4 again!
+                Changes were made yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
