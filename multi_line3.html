@@ -123,7 +123,7 @@
         for (var i = 0; i < dataset.length; i++){
                 svg.append("path")    
                         .attr("d", value_line(dataset[i].price_list))
-                        .attr("stroke", function(d) { return color(i);});
+                        .attr("stroke", function(d) { return console.log("hi");});
         }
                 
         svg.append("g")
