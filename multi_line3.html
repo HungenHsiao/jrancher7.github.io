@@ -40,8 +40,7 @@
         
         var y_scale = d3.scale.linear()
                 .range([height, 0]);
-                
-        var color = d3.scale.category10();
+
 
         //Time format
         var time_format = d3.time.format("%Y-%b-%d");
@@ -118,6 +117,8 @@
                         .y(function(d) {   
                                 return y_scale(d.price);
                         });
+                        
+        var color = d3.scale.category10();
         for (var i = 0; i < dataset.length; i++){
                 svg.append("path")    
                         .attr("d", value_line(dataset[i].price_list))
@@ -142,7 +143,7 @@
                 
     </script>
         <p>
-                Changes were made yet again!
+                Changes were made yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
