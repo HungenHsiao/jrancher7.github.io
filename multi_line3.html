@@ -68,10 +68,10 @@
                 
         //Get data
         var data_loaded = function(data) {
-            var dataset = [];
-            $.each(data, function(position, player) {     // position = index (interger meaning the position of the object in the array); player = object of the array
-                dataset.push(player);
-            });
+            var dataset = data;
+            //$.each(data, function(position, player) {     // position = index (interger meaning the position of the object in the array); player = object of the array
+            //    dataset.push(player);
+            //});
             
             
                 //Parse date
@@ -80,6 +80,7 @@
                 for (var i = 0; i < dataset[j].price_list.length; i++) {
                         var price_entry = dataset[j].price_list[i];
                         price_entry["date"] = new Date(price_entry["date"]);
+                        //price_entry["player_index"] = j;
                         console.log(price_entry["date"]);
                 }
         }
@@ -117,9 +118,10 @@
                         .y(function(d) {   
                                 return y_scale(d.price);
                         });
+        for (var i = 0; i < dataset.length; i++){
                 svg.append("path")    
                         .attr("d", value_line(dataset[i].price_list));
-
+        }
                 
         svg.append("g")
                 .attr("transform", "translate(0," + height + ")")
@@ -139,7 +141,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet again!
+                Changes were made yet yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
