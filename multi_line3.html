@@ -13,7 +13,7 @@
 
                 path { 
                     stroke: black;
-                    stroke-width: 1;
+                    stroke-width: 4;
                     fill: none;
                 }
                 
@@ -21,7 +21,7 @@
                 .axis line {
                     fill: none;
                     stroke: grey;    
-                    stroke-width: 4;
+                    stroke-width: 2;
                     shape-rendering: crispEdges;
                 }
         </style>
@@ -31,8 +31,8 @@
     <script>
         //Margins
         var margin = {top: 20, right: 80, bottom: 30, left: 100},
-                width = 1300 - margin.left - margin.right,
-                height = 800 - margin.top - margin.bottom;
+                width = 1000 - margin.left - margin.right,
+                height = 500 - margin.top - margin.bottom;
         
         //Scales
         var x_scale = d3.time.scale()
