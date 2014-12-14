@@ -20,6 +20,7 @@
                 .axis path,
                 .axis line {
                     fill: none;
+                    stroke: grey;    
                     stroke-width: 2;
                     shape-rendering: crispEdges;
                 }
@@ -118,11 +119,11 @@
                         });
         
                         
-        var color = d3.scale.category10();
+        var color = d3.scale.category10().domain([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
         for (var i = 0; i < dataset.length; i++){
                 svg.append("path")    
                         .attr("d", value_line(dataset[i].price_list))
-                        .attr("stroke", function(d) { return color(dataset[i].name);});
+                        .attr("stroke", function(d) { return color(i);});
         }
                 
         svg.append("g")
@@ -143,7 +144,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet yet yet yet yet yet again!
+                Changes were made yet yet yet yet yet yet yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
