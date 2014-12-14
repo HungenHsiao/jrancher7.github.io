@@ -123,7 +123,7 @@
         for (var i = 0; i < dataset.length; i++){
                 svg.append("path")    
                         .attr("d", value_line(dataset[i].price_list))
-                        .attr("stroke", function(d) { return console.log(color(i));});
+                        .style("stroke", function(d) { return color(i);});
         }
                 
         svg.append("g")
@@ -144,7 +144,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet yet yet yet yet yet yet yet again!
+                Changes were made again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
