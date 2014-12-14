@@ -35,7 +35,7 @@
                 height = 500 - margin.top - margin.bottom;
         
         //Scales
-        var x_scale = d3.scale.linear()
+        var x_scale = d3.time.scale()
                 .range([0, width]);
         
         var y_scale = d3.scale.linear()
@@ -45,7 +45,7 @@
                 
         //Axis for the graph
         var x_axis = d3.svg.axis()
-                .scale(time_format(x_scale))
+                .scale(x_scale)
                 .orient("bottom")
                 .ticks(5);
                         
@@ -136,7 +136,7 @@
                 
     </script>
         <p>
-                Changes were made yet again!
+                Changes were made yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
