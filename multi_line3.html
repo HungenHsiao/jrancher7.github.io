@@ -21,7 +21,7 @@
                 .axis line {
                     fill: none;
                     stroke: grey;    
-                    stroke-width: 2;
+                    stroke-width: 4;
                     shape-rendering: crispEdges;
                 }
         </style>
@@ -31,8 +31,8 @@
     <script>
         //Margins
         var margin = {top: 20, right: 80, bottom: 30, left: 100},
-                width = 900 - margin.left - margin.right,
-                height = 500 - margin.top - margin.bottom;
+                width = 1300 - margin.left - margin.right,
+                height = 800 - margin.top - margin.bottom;
         
         //Scales
         var x_scale = d3.time.scale()
@@ -119,7 +119,7 @@
                         });
         
                         
-        var color = d3.scale.category10().domain([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+        var color = d3.scale.category10();
         for (var i = 0; i < dataset.length; i++){
                 svg.append("path")    
                         .attr("d", value_line(dataset[i].price_list))
