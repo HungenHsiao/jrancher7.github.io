@@ -121,7 +121,7 @@
         for (var i = 0; i < dataset.length; i++){
                 svg.append("path")    
                         .attr("d", value_line(dataset[i].price_list))
-                        .attr("stroke", function(d) { return color(dataset[i])});
+                        .attr("stroke", function(d) { return color(dataset[i]);});
         }
                 
         svg.append("g")
@@ -142,7 +142,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet yet yet yet yet again!
+                Changes were made yet yet yet yet yet yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
