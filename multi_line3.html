@@ -102,10 +102,10 @@
 
         });*/
                 
-        x_scale.domain(d3.extent(dataset[j].price_list, function(d) {
+        x_scale.domain(d3.extent(dataset, function(d) {
                 return d.date;
         }));
-        y_scale.domain([0, d3.max(dataset[j].price_list, function(d) {
+        y_scale.domain([0, d3.max(dataset, function(d) {
                 return d.price;
         })]);
         
@@ -118,7 +118,7 @@
                                 return y_scale(d.price);
                         });
                 svg.append("path")    
-                        .attr("d", value_line(dataset[j].price_list));
+                        .attr("d", value_line(dataset));
 
                 
         svg.append("g")
@@ -139,7 +139,7 @@
                 
     </script>
         <p>
-                Changes were made again!
+                Changes were made yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
