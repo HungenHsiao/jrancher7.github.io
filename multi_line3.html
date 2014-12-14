@@ -42,7 +42,10 @@
                 .range([height, 0]);
                 
         var color = d3.scale.category10();
-                
+
+        //Time format
+        var time_format = d3.time.format("%Y-%b-%d");
+        
         //Axis for the graph
         var x_axis = d3.svg.axis()
                 .scale(time_format(x_scale))
@@ -54,9 +57,7 @@
                 .orient("left")
                 .ticks(5); 
                 
-        //Time format
-        var time_format = d3.time.format("%Y-%b-%d");
-        
+
         //SVG canvas        
         var svg = d3.select("body")
                 .append("svg")
@@ -136,7 +137,7 @@
                 
     </script>
         <p>
-                Changes were made yet yet yet again!
+                Changes were made yet yet yet yet again!
         </p>
         <p>
             Back to <a href="/index.html">Homepage</a>
